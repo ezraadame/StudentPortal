@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentPortal.Pages.NavigationPage.EditAssessmentNavPage"
+             Title="Edit Assessment"
+             BackgroundColor="GhostWhite">
+    <ScrollView>
+        <VerticalStackLayout Padding="10">
+            <Label Text="Edit Assessment"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   Margin="0,20,0,40"
+                   TextColor="Black"
+                   HorizontalOptions="Center"/>
+
+            <Frame BorderColor="Black"
+                   CornerRadius="5"
+                   Padding="15"
+                   BackgroundColor="Azure"
+                   HasShadow="True"
+                   Margin="0,50,0,0">
+                <Grid ColumnSpacing="5" RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Assessment Name" 
+                           HorizontalTextAlignment="Start" 
+                           VerticalTextAlignment="Start"
+                           Padding="3" 
+                           TextColor="Black" 
+                           FontSize="20" 
+                           FontAttributes="Bold"/>
+                    <Entry Placeholder="Enter assessment name"
+                           Grid.Row="1"
+                           Grid.Column="0"
+                           FontSize="20"
+                           TextColor="Black"/>
+                </Grid>
+            </Frame>
+
+            <Frame BorderColor="Black"
+                   CornerRadius="5"
+                   Padding="15"
+                   BackgroundColor="Azure"
+                   HasShadow="True"
+                   Margin="0,20,0,0">
+                <Grid ColumnSpacing="5" RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Start Date" 
+                           HorizontalTextAlignment="Start" 
+                           VerticalTextAlignment="Start"
+                           Padding="3" 
+                           TextColor="Black" 
+                           FontSize="20" 
+                           FontAttributes="Bold"/>
+                    <DatePicker Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Format="MMMM dd, yyyy"
+                                TextColor="Black"
+                                FontSize="18"
+                                HorizontalOptions="Start"/>
+                </Grid>
+            </Frame>
+
+            <Frame BorderColor="Black"
+                   CornerRadius="5"
+                   Padding="15"
+                   BackgroundColor="Azure"
+                   HasShadow="True"
+                   Margin="0,20,0,0">
+                <Grid ColumnSpacing="5" RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="End Date" 
+                           HorizontalTextAlignment="Start" 
+                           VerticalTextAlignment="Start"
+                           Padding="3" 
+                           TextColor="Black" 
+                           FontSize="20" 
+                           FontAttributes="Bold"/>
+                    <DatePicker Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Format="MMMM dd, yyyy"
+                                TextColor="Black"
+                                FontSize="18"
+                                HorizontalOptions="Start"/>
+                </Grid>
+            </Frame>
+
+            <Button Text="Save"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    Margin="20,30,20,20"
+                    HeightRequest="50"
+                    CornerRadius="10"
+                    x:Name="SaveButton"
+                    HorizontalOptions="Fill"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

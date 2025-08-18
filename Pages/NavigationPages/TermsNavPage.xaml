@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentPortal.Pages.NavigationPage.TermsNavPage"
+             Title="Home"
+             BackgroundColor="GhostWhite">
+    <ScrollView>
+        <VerticalStackLayout Padding="0,0,0,50">
+            <Label 
+                Text="Student Portal"
+                FontSize="30"
+                FontAttributes="Bold"
+                Margin="20,60,20,0"
+                TextColor="Black"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <!--First term button-->
+            <Frame BorderColor="Black"
+                    CornerRadius="15"
+                    Padding="15"
+                    BackgroundColor="Azure"
+                    HasShadow="True"
+                    Margin="10,50,10,0">
+                <Grid ColumnSpacing="5" RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Term 1" HorizontalTextAlignment ="Start" VerticalTextAlignment="Start" Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                    <Label Text="Start Date: " Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="End Date: " Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+
+                    <Button x:Name="navTerm1PageButton"
+                        Grid.Row="0" 
+                        Grid.RowSpan="3" 
+                        Grid.Column="0" 
+                        FontAttributes="Bold" 
+                        FontSize="20" 
+                        BackgroundColor="Transparent" 
+                        Clicked="navTerm1PageButton_Clicked" />
+
+                    <Button Text="Edit" 
+                            Grid.Row="0" 
+                            Grid.Column="1" 
+                            CommandParameter="1"
+                            FontAttributes="Bold" 
+                            FontSize="20" 
+                            WidthRequest="70" 
+                            HorizontalOptions="End" 
+                            Grid.RowSpan="1" 
+                            BackgroundColor="#FFA500"
+                            TextColor="White"
+                            Clicked="editTerm_Clicked"/>
+
+                    <Button Text="Delete" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" FontSize="20" WidthRequest="90" HorizontalOptions="End" Grid.RowSpan="2" BackgroundColor="OrangeRed"/>
+                </Grid>
+            </Frame>
+
+            <!--Second term button-->
+            <Frame BorderColor="Black"
+                   CornerRadius="15"
+                   Padding="15"
+                   BackgroundColor="Azure"
+                   HasShadow="True"
+                   Margin="10,10,10,0">
+                <Grid ColumnSpacing="5" RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Term 2" HorizontalTextAlignment ="Start" VerticalTextAlignment="Start" Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                    <Label Text="Start Date: " Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="End Date: " Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+
+                    <Button x:Name="navTermPage2Button"
+                        Grid.Row="0" 
+                        Grid.RowSpan="3" 
+                        Grid.Column="0" 
+                        FontAttributes="Bold" 
+                        FontSize="20" 
+                        BackgroundColor="Transparent" 
+                        Clicked="navTermPage2Button_Clicked"/>
+
+                    <Button Text="Edit" 
+                            Grid.Row="0" 
+                            Grid.Column="1" 
+                            CommandParameter="2"
+                            FontAttributes="Bold" 
+                            FontSize="20" 
+                            WidthRequest="70" 
+                            HorizontalOptions="End" 
+                            Grid.RowSpan="1" 
+                            BackgroundColor="#FFA500"
+                            TextColor="White"
+                            Clicked="editTerm_Clicked"/>
+
+                    <Button Text="Delete" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" FontSize="20" WidthRequest="90" HorizontalOptions="End" Grid.RowSpan="2" BackgroundColor="OrangeRed"/>
+                </Grid>
+            </Frame>
+
+            <!--Third term button-->
+            <Frame BorderColor="Black"
+                   CornerRadius="15"
+                   Padding="15"
+                   BackgroundColor="Azure"
+                   HasShadow="True"
+                   Margin="10,10,10,0">
+                <Grid ColumnSpacing="5" RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Term 3" HorizontalTextAlignment ="Start" VerticalTextAlignment="Start" Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                    <Label Text="Start Date: " Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="End Date: " Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+
+                    <Button x:Name="navTermPage3Button"
+                        Grid.Row="0" 
+                        Grid.RowSpan="3" 
+                        Grid.Column="0" 
+                        FontAttributes="Bold" 
+                        FontSize="20" 
+                        BackgroundColor="Transparent" 
+                        Clicked="navTermPage3Button_Clicked"/>
+
+                    <Button Text="Edit" 
+                            Grid.Row="0" 
+                            Grid.Column="1" 
+                            CommandParameter="3"
+                            FontAttributes="Bold" 
+                            FontSize="20" 
+                            WidthRequest="70" 
+                            HorizontalOptions="End" 
+                            Grid.RowSpan="1" 
+                            BackgroundColor="#FFA500"
+                            TextColor="White"
+                            Clicked="editTerm_Clicked"/>
+
+                    <Button Text="Delete" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" FontSize="20" WidthRequest="90" HorizontalOptions="End" Grid.RowSpan="2" BackgroundColor="OrangeRed"/>
+                </Grid>
+            </Frame>
+
+            <Button
+                x:Name="addTermButton"
+                Text="Add Term"
+                WidthRequest="300"
+                Margin="0,50,0,0"
+                BackgroundColor="#007ACC"
+                TextColor="White"
+                FontAttributes="Bold"
+                FontSize="22"
+                HorizontalOptions="Center"
+                Clicked="addTermButton_Clicked"
+                />
+
+            <Button
+                x:Name="navSetNotificationsButton"
+                Text="Set Notification Preferences"
+                TextColor="White"
+                WidthRequest="300"
+                Margin="0,50,0,0"
+                BackgroundColor="MediumPurple"
+                FontAttributes="Bold"
+                FontSize="22"
+                HorizontalOptions="Center"
+                Clicked="navSetNotificationsButton_Clicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

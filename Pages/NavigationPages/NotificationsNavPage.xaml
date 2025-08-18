@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentPortal.Pages.NavigationPage.NotificationsNavPage"
+             Title="Notification Preferences"
+             BackgroundColor="GhostWhite">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label 
+                Text="Notifications"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                TextColor="Black"
+                FontSize="24"
+                FontAttributes="Bold"
+                Margin="20,50,20,0"/>
+
+            <Frame BorderColor="Black"
+                    CornerRadius="5"
+                    Padding="5"
+                    BackgroundColor="Azure"
+                    HasShadow="True"
+                    Margin="10,20,10,0"
+ >
+                <Grid ColumnSpacing="0" RowSpacing="15">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Switch Grid.Row="1"/>
+                    <Switch Grid.Row="2"/>
+
+                    <Label Text="Term Notifications" Grid.Row="0" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="Term Start Date " Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="Term End Date " Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                </Grid>
+            </Frame>
+
+            <Frame BorderColor="Black"
+                   CornerRadius="5"
+                   Padding="5"
+                   BackgroundColor="Azure"
+                   HasShadow="True"
+                   Margin="10,20,10,0"
+>
+                <Grid ColumnSpacing="0" RowSpacing="15">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Switch Grid.Row="1"/>
+                    <Switch Grid.Row="2"/>
+
+                    <Label Text="Course Notifications" Grid.Row="0" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="Course Start Date " Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="Course End Date " Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                </Grid>
+            </Frame>
+
+            <Frame BorderColor="Black"
+                   CornerRadius="5"
+                   Padding="5"
+                   BackgroundColor="Azure"
+                   HasShadow="True"
+                   Margin="10,20,10,0"
+>
+                <Grid ColumnSpacing="0" RowSpacing="15">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Switch Grid.Row="1"/>
+                    <Switch Grid.Row="2"/>
+
+                    <Label Text="Assessment Notifications" Grid.Row="0" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="Assessment Start Date " Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="Assessment End Date " Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

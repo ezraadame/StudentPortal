@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentPortal.Pages.NavigationPage.AssessmentsNavPage"
+             Title="Assessments"
+             BackgroundColor="GhostWhite">
+    <ScrollView>
+        <VerticalStackLayout Padding="0,0,0,50">
+            <Label 
+            Text="Assessment View"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            TextColor="Black"
+            FontSize="24"
+            FontAttributes="Bold"
+            Margin="20,50,20,0"/>
+            <Label 
+            Text="Data Structures &amp; Algorithms"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            TextColor="Black"
+            FontSize="26"
+            FontAttributes="Bold"
+            Margin="20,40,20,0"/>
+
+            <Frame BorderColor="Black"
+             CornerRadius="5"
+             Padding="5"
+             BackgroundColor="Azure"
+             HasShadow="True"
+             Margin="10,20,10,0">
+                <Grid ColumnSpacing="0" RowSpacing="15">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Objective Assessment" Grid.Row="0" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="Name" Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="Start Date " Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="End Date " Grid.Row="3" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <Button Text="Edit" 
+                            Grid.Row="0" 
+                            Grid.Column="1" 
+                            CommandParameter="1"
+                            FontAttributes="Bold" 
+                            FontSize="20" 
+                            WidthRequest="70" 
+                            HorizontalOptions="End" 
+                            Grid.RowSpan="1" 
+                            BackgroundColor="#FFA500"
+                            TextColor="White"
+                            Clicked="Button_Clicked"/>
+                </Grid>
+            </Frame>
+
+            <Frame BorderColor="Black"
+             CornerRadius="5"
+             Padding="5"
+             BackgroundColor="Azure"
+             HasShadow="True"
+             Margin="10,15,10,0">
+                <Grid ColumnSpacing="0" RowSpacing="15">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Performance Assessment" Grid.Row="0" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="Name" Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="Start" Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <Label Text="End" Grid.Row="3" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    
+                    <Button Text="Edit" 
+                            Grid.Row="0" 
+                            Grid.Column="1" 
+                            CommandParameter="2"
+                            FontAttributes="Bold" 
+                            FontSize="20" 
+                            WidthRequest="70" 
+                            HorizontalOptions="End" 
+                            Grid.RowSpan="1" 
+                            BackgroundColor="#FFA500"
+                            TextColor="White"
+                            Clicked="Button_Clicked"/>
+                </Grid>
+            </Frame>
+            <Button
+                Text="Drop Assessment"
+                WidthRequest="300"
+                Margin="0,15,0,0"
+                BackgroundColor="OrangeRed"
+                FontAttributes="Bold"
+                FontSize="22"
+                HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
