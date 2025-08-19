@@ -6,12 +6,12 @@ namespace StudentPortal.Services
 {
     public static class DBService
     {
-        private static SQLiteAsyncConnection _db;
+        private static SQLiteAsyncConnection? _db;
 
-        public static async Task CreateDatabase()
+        public static async Task Init()
         {
 
-            if (_db == null)
+            if (_db != null)
             {
                 return;
             }
@@ -33,6 +33,11 @@ namespace StudentPortal.Services
             await _db.CreateTableAsync<Term>();
             await _db.CreateTableAsync<Courses>();
             await _db.CreateTableAsync<Assessments>();
+        }
+        public static async Task InsertTerm(Term term)
+        {
+            await Init();
+            await _db.InsertAsync(term);
         }
     }
 }
