@@ -14,14 +14,29 @@ public class Term
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
 
-    public static async Task AddTerm(int id, string? name)
+    public static async Task AddTerm(int id, string? name, DateTime startDate, DateTime endDate)
     {
         await DBService.Init();
         var term = new Term()
         {
             Id = id,
-            Name = name
+            Name = name,
+            StartDate = startDate, 
+            EndDate = endDate
         };
         await DBService.InsertTerm(term);
+    }
+
+    public static async Task EditTerm(int id, string? name, DateTime startDate, DateTime endDate)
+    {
+        await DBService.Init();
+        var term = new Term()
+        {
+            Id = id,
+            Name = name,
+            StartDate = startDate,
+            EndDate = endDate
+        };
+        await DBService.EditTerms(term);
     }
 }

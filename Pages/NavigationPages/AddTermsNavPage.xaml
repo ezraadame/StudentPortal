@@ -37,7 +37,8 @@
                            TextColor="Black" 
                            FontSize="20" 
                            FontAttributes="Bold"/>
-                    <Entry Placeholder="Enter term name"
+                    <Entry x:Name="TermNameEntry"
+                           Placeholder="Enter term name"
                            Grid.Row="1"
                            Grid.Column="0"
                            FontSize="20"
@@ -68,7 +69,8 @@
                            TextColor="Black" 
                            FontSize="20" 
                            FontAttributes="Bold"/>
-                    <DatePicker Grid.Row="1"
+                    <DatePicker x:Name="StartDatePicker"
+                                Grid.Row="1"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 Format="MMMM dd, yyyy"
@@ -101,7 +103,8 @@
                            TextColor="Black" 
                            FontSize="20" 
                            FontAttributes="Bold"/>
-                    <DatePicker Grid.Row="1"
+                    <DatePicker x:Name="EndDatePicker" 
+                                Grid.Row="1"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 Format="MMMM dd, yyyy"
@@ -111,7 +114,8 @@
                 </Grid>
             </Frame>
 
-            <Button Text="Save"
+            <Button x:Name="SaveButton"
+                    Text="Save"
                     BackgroundColor="#4CAF50"
                     TextColor="White"
                     FontSize="20"
@@ -119,8 +123,8 @@
                     Margin="20,30,20,20"
                     HeightRequest="50"
                     CornerRadius="10"
-                    x:Name="SaveButton"
-                    HorizontalOptions="Fill"/>
+                    HorizontalOptions="Fill"
+                    Clicked="SaveButton_Clicked"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

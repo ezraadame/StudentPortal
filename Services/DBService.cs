@@ -24,8 +24,7 @@ namespace StudentPortal.Services
             await _db.CreateTableAsync<Courses>();
             await _db.CreateTableAsync<Assessments>();
 
-            //Users
-            //TODO await _db.CreateTableAsync<Users>();
+            //TODO Create Users section of app: await _db.CreateTableAsync<Users>();
 
         }
         public static async Task CreateTables()
@@ -38,6 +37,18 @@ namespace StudentPortal.Services
         {
             await Init();
             await _db.InsertAsync(term);
+        }
+
+        public static async Task EditTerms(Term term)
+        {
+            await Init();
+            await _db.UpdateAsync(term);
+        }
+
+        public static async Task<List<Term>> GetTerms()
+        {
+            await Init();
+            return await _db.Table<Term>().ToListAsync();
         }
     }
 }

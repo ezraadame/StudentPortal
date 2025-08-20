@@ -1,33 +1,33 @@
+using StudentPortal.Models;
+using StudentPortal.Services;
+using System.Collections.ObjectModel;
+
 namespace StudentPortal.Pages.NavigationPage
 {
     public partial class TermsNavPage : ContentPage
     {
-        private readonly string _termId;
+        //private readonly string _termId;
+        private ObservableCollection<Term> _terms = new();
 
         public TermsNavPage()
         {
             InitializeComponent();
+            TermsCollection.ItemsSource = _terms;
+
         }
 
-        public TermsNavPage(string termId)
+        protected override async void OnAppearing()
         {
-            InitializeComponent();
-            _termId = termId;
+            base.OnAppearing();
+            await LoadTerms();
         }
 
-        private async void navTerm1PageButton_Clicked(object sender, EventArgs e)
+        private async Task LoadTerms()
         {
-            await Navigation.PushAsync(new CoursesNavPage());
-        }
-
-        private async void navTermPage2Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CoursesNavPage());
-        }
-
-        private async void navTermPage3Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CoursesNavPage());
+            var terms = await DBService.GetTerms();
+            _terms.Clear();
+            foreach (var term in terms)
+                _terms.Add(term);
         }
 
         private async void navSetNotificationsButton_Clicked(object sender, EventArgs e)
@@ -40,12 +40,21 @@ namespace StudentPortal.Pages.NavigationPage
             await Navigation.PushAsync(new AddTermsNavPage());
         }
 
-        private async void editTerm_Clicked(object sender, EventArgs e)
+        private async void EditButton_Clicked(object sender, EventArgs e)
         {
-            var button = (Button)sender;
-            var termId = button.CommandParameter.ToString();
-            // Handle editing for specific term
-            await Navigation.PushAsync(new EditTermsNavPage(termId));
+            var button = sender as Button;
+            var termToEdit = button?.CommandParameter as Term;
+            await Navigation.PushAsync(new EditTermsNavPage(termToEdit));
+        }
+
+        private void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void navTermPageButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CoursesNavPage());
         }
     }
 }

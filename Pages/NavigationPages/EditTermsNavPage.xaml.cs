@@ -1,18 +1,35 @@
+using StudentPortal.Models;
+using StudentPortal.Services;
+
 namespace StudentPortal.Pages.NavigationPage
 {
     public partial class EditTermsNavPage : ContentPage
     {
-        private readonly string _termId;
+        private readonly Term _termToEdit;
 
-        public EditTermsNavPage()
+        public EditTermsNavPage(Term termToEdit)
         {
             InitializeComponent();
+            _termToEdit = termToEdit;
+            LoadTermData();
         }
 
-        public EditTermsNavPage(string termId)
+        private void LoadTermData()
         {
-            InitializeComponent();
-            _termId = termId;
+            TermNameEntry.Text = _termToEdit.Name;
+            StartDatePicker.Date = _termToEdit.StartDate;
+            EndDatePicker.Date = _termToEdit.EndDate;
+        }
+
+        private async void SaveButton_Clicked(object sender, EventArgs e)
+        {
+            _termToEdit.Name = TermNameEntry.Text;
+            _termToEdit.StartDate = StartDatePicker.Date;
+            _termToEdit.EndDate = EndDatePicker.Date;
+
+            await DBService.EditTerms(_termToEdit);
+            await DisplayAlert("Success", "Term was changed", "OK");
+            await Navigation.PopAsync();
         }
     }
 }
