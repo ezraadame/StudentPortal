@@ -1,6 +1,7 @@
 using StudentPortal.Models;
 using StudentPortal.Services;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace StudentPortal.Pages.NavigationPage
 {
@@ -47,9 +48,28 @@ namespace StudentPortal.Pages.NavigationPage
             await Navigation.PushAsync(new EditTermsNavPage(termToEdit));
         }
 
-        private void DeleteButton_Clicked(object sender, EventArgs e)
+        private async void DeleteButton_Clicked(object sender, EventArgs e)
         {
+            var button = sender as Button;
+            var termToDelete = button?.CommandParameter as Term;
 
+            if (termToDelete != null)
+            {
+                bool userConfirmed = await DisplayAlert(
+                    "Delete Term",
+                    $"Are you sure you want to delete '{termToDelete.Name}'?",
+                    "Delete",
+                    "Cancel"
+                    );
+
+                if (userConfirmed)
+                {
+                    await DBService.DeleteTerm(termToDelete);
+                    _terms.Remove(termToDelete);
+
+                    await DisplayAlert("Success", "Term deleted successfully", "OK");
+                }
+            }
         }
 
         private async void navTermPageButton_Clicked(object sender, EventArgs e)

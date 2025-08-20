@@ -45,6 +45,12 @@ namespace StudentPortal.Services
             await _db.UpdateAsync(term);
         }
 
+        public static async Task DeleteTerm(Term term)
+        {
+            await Init();
+            await _db.DeleteAsync(term);
+        }
+
         public static async Task<List<Term>> GetTerms()
         {
             await Init();
