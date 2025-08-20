@@ -49,171 +49,60 @@
                 </Grid>
             </Frame>
 
-            <!-- Course 2 -->
-            <Frame BorderColor="Black"
-                   CornerRadius="15"
-                   Padding="15"
-                   BackgroundColor="Azure"
-                   HasShadow="True"
-                   Margin="10,10,10,0">
-                <Grid ColumnSpacing="5" RowSpacing="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+            <CollectionView x:Name="CourseCollection">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame 
+                                BorderColor="Black"
+                                CornerRadius="15"
+                                Padding="15"
+                                BackgroundColor="Azure"
+                                HasShadow="True"
+                                Margin="10,15,10,0">
+                            
+                            <Grid ColumnSpacing="5" RowSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
 
-                    <Label Text="Course 2" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <Label Text="Start Date: " Grid.Row="1" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-                    <Label Text="End Date: " Grid.Row="2" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
+                                <Label Text="{Binding Name}" HorizontalTextAlignment ="Start" VerticalTextAlignment="Start" Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold" />
+                                <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                                <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
 
-                    <Button x:Name="navCourse2PageButton"
-                            Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
-                            FontAttributes="Bold" FontSize="20"
-                            BackgroundColor="Transparent"
-                            Clicked="navCourse2PageButton_Clicked"/>
+                                <Button x:Name="navCoursePageButton"
+                                        Grid.Row="0" 
+                                        Grid.RowSpan="3" 
+                                        Grid.Column="0" 
+                                        FontAttributes="Bold" 
+                                        FontSize="20" 
+                                        BackgroundColor="Transparent" 
+                                        Clicked="navCoursePageButton_Clicked" />
 
-                    <Button Text="Delete" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" FontSize="20" WidthRequest="90" HorizontalOptions="End" Grid.RowSpan="2" BackgroundColor="OrangeRed"/>
-                </Grid>
-            </Frame>
-
-            <!-- Course 3 -->
-            <Frame BorderColor="Black"
-                   CornerRadius="15"
-                   Padding="15"
-                   BackgroundColor="Azure"
-                   
-                   HasShadow="True"
-                   Margin="10,10,10,0">
-                <Grid ColumnSpacing="5" RowSpacing="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Text="Course 3" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <Label Text="Start Date: " Grid.Row="1" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-                    <Label Text="End Date: " Grid.Row="2" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-
-                    <Button x:Name="navCourse3PageButton"
-                            Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
-                            FontAttributes="Bold" FontSize="20"
-                            BackgroundColor="Transparent"
-                            Clicked="navCourse3PageButton_Clicked"/>
-
-                    <Button Text="Delete" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" FontSize="20" WidthRequest="90" HorizontalOptions="End" Grid.RowSpan="2" BackgroundColor="OrangeRed"/>
-                </Grid>
-            </Frame>
-
-            <!-- Course 4 -->
-            <Frame BorderColor="Black"
-                   CornerRadius="15"
-                   Padding="15"
-                   BackgroundColor="Azure"
-                   HasShadow="True"
-                   Margin="10,10,10,0">
-                <Grid ColumnSpacing="5" RowSpacing="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Text="Course 4" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <Label Text="Start Date: " Grid.Row="1" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-                    <Label Text="End Date: " Grid.Row="2" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-
-                    <Button x:Name="navCourse4PageButton"
-                            Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
-                            FontAttributes="Bold" FontSize="20"
-                            BackgroundColor="Transparent"
-                            Clicked="navCourse4PageButton_Clicked"/>
-
-                    <Button Text="Delete" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" FontSize="20" WidthRequest="90" HorizontalOptions="End" Grid.RowSpan="2" BackgroundColor="OrangeRed"/>
-                </Grid>
-            </Frame>
-
-            <!-- Course 5 -->
-            <Frame BorderColor="Black"
-                   CornerRadius="15"
-                   Padding="15"
-                   BackgroundColor="Azure"
-                   HasShadow="True"
-                   Margin="10,10,10,0">
-                <Grid ColumnSpacing="5" RowSpacing="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Text="Course 5" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <Label Text="Start Date: " Grid.Row="1" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-                    <Label Text="End Date: " Grid.Row="2" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-
-                    <Button x:Name="navCourse5PageButton"
-                            Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
-                            FontAttributes="Bold" FontSize="20"
-                            BackgroundColor="Transparent"
-                            Clicked="navCourse5PageButton_Clicked"/>
-
-                    <Button Text="Delete" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" FontSize="20" WidthRequest="90" HorizontalOptions="End" Grid.RowSpan="2" BackgroundColor="OrangeRed"/>
-                </Grid>
-            </Frame>
-
-            <!-- Course 6 -->
-            <Frame BorderColor="Black"
-                   CornerRadius="15"
-                   Padding="15"
-                   BackgroundColor="Azure"
-                   HasShadow="True"
-                   Margin="10,10,10,0">
-                <Grid ColumnSpacing="5" RowSpacing="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Text="Course 6" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <Label Text="Start Date: " Grid.Row="1" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-                    <Label Text="End Date: " Grid.Row="2" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-
-                    <Button x:Name="navCourse6PageButton"
-                            Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
-                            FontAttributes="Bold" FontSize="20"
-                            BackgroundColor="Transparent"
-                            Clicked="navCourse6PageButton_Clicked"/>
-
-                    <Button Text="Delete" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" FontSize="20" WidthRequest="90" HorizontalOptions="End" Grid.RowSpan="2" BackgroundColor="OrangeRed"/>
-                </Grid>
-            </Frame>
+                                <Button 
+                                    x:Name="DeleteButton"
+                                    Text="Delete" 
+                                    Grid.Row="1" 
+                                    Grid.Column="1" 
+                                    FontAttributes="Bold" 
+                                    FontSize="20" 
+                                    WidthRequest="90" 
+                                    HorizontalOptions="End" 
+                                    Grid.RowSpan="2" 
+                                    BackgroundColor="OrangeRed"
+                                    CommandParameter="{Binding .}"
+                                    Clicked="DeleteButton_Clicked"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
             <Button
                 x:Name="addCourseButton"

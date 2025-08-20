@@ -1,47 +1,65 @@
+using StudentPortal.Models;
+using StudentPortal.Services;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace StudentPortal.Pages.NavigationPage
 {
     public partial class CoursesNavPage : ContentPage
     {
+        private ObservableCollection<Courses> _courses = new();
         public CoursesNavPage()
         {
             InitializeComponent();
+            CourseCollection.ItemsSource = _courses;
         }
 
-        private async void navCourse1PageButton_Clicked(object sender, EventArgs e)
+        protected override async void OnAppearing()
         {
-            await Navigation.PushAsync(new CourseViewNavPage());
+            base.OnAppearing();
+            await LoadCourses();
         }
 
-        private async void navCourse2PageButton_Clicked(object sender, EventArgs e)
+        private async Task LoadCourses()
         {
-            await Navigation.PushAsync(new CourseViewNavPage());
-        }
-
-        private async void navCourse3PageButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CourseViewNavPage());
-        }
-
-        private async void navCourse4PageButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CourseViewNavPage());
-        }
-
-        private async void navCourse5PageButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CourseViewNavPage());
-        }
-
-        private async void navCourse6PageButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new CourseViewNavPage());
+            var courses = await DBService.GetCourses();
+            _courses.Clear();
+            foreach (var course in courses)
+                _courses.Add(course);
         }
 
         private async void addCourseButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new AddCourseNavPage());
+        }
+
+        private async void navCoursePageButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CourseViewNavPage());
+        }
+
+        private async void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var courseToDelete = button?.CommandParameter as Courses;
+
+            if (courseToDelete != null)
+            {
+                bool userConfirmed = await DisplayAlert(
+                    "Delete Term",
+                    $"Are you sure you want to delete '{courseToDelete.Name}'?",
+                    "Delete",
+                    "Cancel"
+                    );
+
+                if (userConfirmed)
+                {
+                    await DBService.DeleteCourse(courseToDelete);
+                    _courses.Remove(courseToDelete);
+
+                    await DisplayAlert("Success", "Term deleted successfully", "OK");
+                }
+            }
         }
     }
 }
