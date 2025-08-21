@@ -133,8 +133,6 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             
-            
-
             <Button
                 x:Name="addTermButton"
                 Text="Add Term"

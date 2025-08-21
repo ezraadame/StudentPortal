@@ -74,5 +74,12 @@ namespace StudentPortal.Services
             await Init();
             return await _db.Table<Courses>().ToListAsync();
         }
+
+        //
+        public static async Task<Courses> GetCourse(int courseId)
+        {
+            await Init();
+            return await _db.FindAsync<Courses>(courseId);
+        }
     }
 }

@@ -15,40 +15,6 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
-            <!-- Course 1 -->
-            <Frame BorderColor="Black"
-                   CornerRadius="15"
-                   Padding="15"
-                   BackgroundColor="Azure"
-                   
-                   HasShadow="True"
-                   Margin="10,50,10,0">
-                <Grid ColumnSpacing="5" RowSpacing="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Text="Course 1" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <Label Text="Start Date: " Grid.Row="1" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-                    <Label Text="End Date: " Grid.Row="2" Grid.Column="0" FontSize="16" FontAttributes="Bold" TextColor="Black"/>
-
-                    <Button x:Name="navCourse1PageButton"
-                            Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
-                            FontAttributes="Bold" FontSize="20"
-                            BackgroundColor="Transparent"
-                            Clicked="navCourse1PageButton_Clicked"/>
-
-                    <Button Text="Delete" Grid.Row="1" Grid.Column="1" FontAttributes="Bold" FontSize="20" WidthRequest="90" HorizontalOptions="End" Grid.RowSpan="2" BackgroundColor="OrangeRed"/>
-                </Grid>
-            </Frame>
-
             <CollectionView x:Name="CourseCollection">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -58,13 +24,15 @@
                                 Padding="15"
                                 BackgroundColor="Azure"
                                 HasShadow="True"
-                                Margin="10,15,10,0">
+                                Margin="10,35,10,0">
                             
                             <Grid ColumnSpacing="5" RowSpacing="5">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -72,23 +40,25 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding Name}" HorizontalTextAlignment ="Start" VerticalTextAlignment="Start" Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold" />
-                                <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
-                                <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                                <Label Text="{Binding Name}" HorizontalTextAlignment ="Start" VerticalTextAlignment="Start" Padding="0" TextColor="Black" FontSize="24" FontAttributes="Bold" />
+                                <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="DarkCyan" />
+                                <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="DarkCyan" />
+                                <Label Text="{Binding Status, StringFormat=Status: {0}}" Grid.Row="3" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="ForestGreen" />
 
                                 <Button x:Name="navCoursePageButton"
                                         Grid.Row="0" 
-                                        Grid.RowSpan="3" 
+                                        Grid.RowSpan="4" 
                                         Grid.Column="0" 
                                         FontAttributes="Bold" 
                                         FontSize="20" 
-                                        BackgroundColor="Transparent" 
+                                        BackgroundColor="Transparent"
+                                        CommandParameter="{Binding .}"
                                         Clicked="navCoursePageButton_Clicked" />
 
                                 <Button 
                                     x:Name="DeleteButton"
                                     Text="Delete" 
-                                    Grid.Row="1" 
+                                    Grid.Row="2" 
                                     Grid.Column="1" 
                                     FontAttributes="Bold" 
                                     FontSize="20" 

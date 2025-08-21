@@ -35,7 +35,12 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async void navCoursePageButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CourseViewNavPage());
+            var button = sender as Button;
+            if (button?.CommandParameter is Courses course)
+            {
+                await Navigation.PushAsync(new CourseViewNavPage(course.Id));
+                return;
+            }
         }
 
         private async void DeleteButton_Clicked(object sender, EventArgs e)

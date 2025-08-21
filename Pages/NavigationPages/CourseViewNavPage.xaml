@@ -6,7 +6,7 @@
              BackgroundColor="GhostWhite">
     <ScrollView>
         <VerticalStackLayout Padding="0,0,0,50">
-            <Label 
+            <!--<Label 
             Text="Course View"
             VerticalOptions="Center" 
             HorizontalOptions="Center" 
@@ -106,9 +106,69 @@
                         VerticalOptions="Start"
                         />
                 </Grid>
-            </Frame>
+            </Frame>-->
 
-            <Button
+            <CollectionView x:Name="SpecificCourse">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame 
+                                BorderColor="Black"
+                                CornerRadius="15"
+                                Padding="15"
+                                BackgroundColor="Azure"
+                                HasShadow="True"
+                                Margin="10,35,10,0">
+
+                            <Grid ColumnSpacing="5" RowSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Name}" HorizontalTextAlignment ="Start" VerticalTextAlignment="Start" Padding="0" TextColor="Black" FontSize="24" FontAttributes="Bold" />
+                                <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="DarkCyan" />
+                                <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="DarkCyan" />
+                                <Label Text="{Binding Status, StringFormat=Status: {0}}" Grid.Row="3" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="ForestGreen" />
+
+                                <Button x:Name="navCoursePageButton"
+                                        Grid.Row="0" 
+                                        Grid.RowSpan="4" 
+                                        Grid.Column="0" 
+                                        FontAttributes="Bold" 
+                                        FontSize="20" 
+                                        BackgroundColor="Transparent" 
+                                        />
+
+                                <Button 
+                                    x:Name="DeleteButton"
+                                    Text="Delete" 
+                                    Grid.Row="2" 
+                                    Grid.Column="1" 
+                                    FontAttributes="Bold" 
+                                    FontSize="20" 
+                                    WidthRequest="90" 
+                                    HorizontalOptions="End" 
+                                    Grid.RowSpan="2" 
+                                    BackgroundColor="OrangeRed"
+                                    CommandParameter="{Binding .}"
+                                    />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            
+
+                <Button
                 x:Name="EditCourseButton"
                 Text="Edit Course"
                 WidthRequest="300"
@@ -120,17 +180,18 @@
                 HorizontalOptions="Center"
                 Clicked="EditCourseButton_Clicked"
                 />
-            <Button
-            x:Name="navAssessmentViewButton"
-            Text="Assessments"
-            TextColor="White"
-            WidthRequest="300"
-            Margin="0,15,0,0"
-            BackgroundColor="MediumSlateBlue"
-            FontAttributes="Bold"
-            FontSize="22"
-            HorizontalOptions="Center"
-            Clicked="navAssessmentViewButton_Clicked"/>
+                <Button
+                x:Name="navAssessmentViewButton"
+                Text="Assessments"
+                TextColor="White"
+                WidthRequest="300"
+                Margin="0,15,0,0"
+                BackgroundColor="MediumSlateBlue"
+                FontAttributes="Bold"
+                FontSize="22"
+                HorizontalOptions="Center"
+                Clicked="navAssessmentViewButton_Clicked"
+                />
 
         </VerticalStackLayout>
     </ScrollView>

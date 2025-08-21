@@ -1,3 +1,6 @@
+using StudentPortal.Models;
+using StudentPortal.Services;
+
 namespace StudentPortal.Pages.NavigationPage
 {
     public partial class AddCourseNavPage : ContentPage
@@ -6,7 +9,7 @@ namespace StudentPortal.Pages.NavigationPage
         {
             InitializeComponent();
 
-            StatusPicker.ItemsSource = new List<string>
+            StatusPickerEntry.ItemsSource = new List<string>
             {
                 "Pending",
                 "In Progress",
@@ -15,6 +18,28 @@ namespace StudentPortal.Pages.NavigationPage
             }; 
         }
 
-        //TODO Implement AddCourse;
+        private async void SaveCourseButton_Clicked(object sender, EventArgs e)
+        {
+            var newCourse = new Courses()
+            {
+                Name = CourseNameEntry.Text,
+                StartDate = StartDatePickerEntry.Date,
+                EndDate = EndDatePickerEntry.Date,
+                Status = (string)StatusPickerEntry.SelectedItem,
+                InstructorName = InstructorNameEntry.Text,
+                InstructorPhone = InstructorPhoneEntry.Text,
+                InstructorEmail = InstructorEmailEntry.Text,
+                //Notes = notes,
+                //NotificationOn = notificationOn
+
+
+            };
+
+            await DBService.InsertCourse(newCourse);
+            await DisplayAlert("Success", "Course saved.", "OK");
+            await Navigation.PopAsync();
+        }
+
+        
     }
 }

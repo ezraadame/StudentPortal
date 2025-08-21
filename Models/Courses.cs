@@ -39,7 +39,7 @@ namespace StudentPortal.Models
                 NotificationOn = notificationOn
             };
             await DBService.InsertCourse(course);
-            //TODO Finish imp of adding courses
+
         }
     }
 
