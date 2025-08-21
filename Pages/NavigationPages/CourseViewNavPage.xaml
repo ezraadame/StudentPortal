@@ -6,6 +6,7 @@
              BackgroundColor="GhostWhite">
     <ScrollView>
         <VerticalStackLayout Padding="0,0,0,50">
+            
             <!--<Label 
             Text="Course View"
             VerticalOptions="Center" 
@@ -14,14 +15,7 @@
             FontSize="24"
             FontAttributes="Bold"
             Margin="20,50,20,0"/>
-            <Label 
-            Text="Data Structures &amp; Algorithms"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" 
-            TextColor="Black"
-            FontSize="26"
-            FontAttributes="Bold"
-            Margin="20,40,20,0"/>
+            
 
 
             <Frame BorderColor="Black"
@@ -114,13 +108,20 @@
                         <Frame 
                                 BorderColor="Black"
                                 CornerRadius="15"
-                                Padding="15"
+                                Padding="20"
                                 BackgroundColor="Azure"
                                 HasShadow="True"
                                 Margin="10,35,10,0">
 
                             <Grid ColumnSpacing="5" RowSpacing="5">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -133,40 +134,48 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding Name}" HorizontalTextAlignment ="Start" VerticalTextAlignment="Start" Padding="0" TextColor="Black" FontSize="24" FontAttributes="Bold" />
-                                <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="DarkCyan" />
-                                <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="DarkCyan" />
-                                <Label Text="{Binding Status, StringFormat=Status: {0}}" Grid.Row="3" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="ForestGreen" />
+                                <Label Text="{Binding Name}" HorizontalTextAlignment ="Start" VerticalTextAlignment="Start" Padding="5" TextColor="Black" FontSize="34" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <BoxView    Color="Black" 
+                                            HeightRequest="3" 
+                                            WidthRequest="500"  
+                                            HorizontalOptions="Start" 
+                                            Margin="0,40,0,0" />
+
+                                <Label Text="Course Information" Grid.Row="1" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline"/>
+                                <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" Grid.Row="2" Grid.Column="0"  FontSize="18" FontAttributes="Bold" TextColor="DarkCyan"/>
+                                <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" Grid.Row="3" Grid.Column="0"  FontSize="18" FontAttributes="Bold" TextColor="DarkCyan"/>
+                                <Label Text="{Binding Status}" Grid.Row="4" Grid.Column="0"  FontSize="18" FontAttributes="Bold" TextColor="ForestGreen" />
+
+
+                                <Label Text="Instructor Information" Grid.Row="5" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline"/>
+                                <Label Text="{Binding InstructorName, StringFormat=Name: {0}}" Grid.Row="6" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" />
+                                <Label Text="{Binding InstructorEmail, StringFormat=E-Mail: {0}}" Grid.Row="7" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" />
+                                <Label Text="{Binding InstructorPhone, StringFormat=Phone: {0}}" Grid.Row="8" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" />
+
+                                <Label Text="Additional Notes" Grid.Row="9" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline"/>
+                                <Editor 
+                                    
+                                    MaxLength="200"
+                                    AutoSize="Disabled"
+                                    HeightRequest="80"
+                                    TextColor="Black"
+                                    FontSize="18"
+                                    Grid.Row="10"
+                                    Grid.Column="0"
+                                    VerticalOptions="Start"
+                                    />
 
                                 <Button x:Name="navCoursePageButton"
                                         Grid.Row="0" 
-                                        Grid.RowSpan="4" 
-                                        Grid.Column="0" 
-                                        FontAttributes="Bold" 
-                                        FontSize="20" 
+                                        Grid.RowSpan="8" 
+                                        Grid.Column="0"
                                         BackgroundColor="Transparent" 
                                         />
-
-                                <Button 
-                                    x:Name="DeleteButton"
-                                    Text="Delete" 
-                                    Grid.Row="2" 
-                                    Grid.Column="1" 
-                                    FontAttributes="Bold" 
-                                    FontSize="20" 
-                                    WidthRequest="90" 
-                                    HorizontalOptions="End" 
-                                    Grid.RowSpan="2" 
-                                    BackgroundColor="OrangeRed"
-                                    CommandParameter="{Binding .}"
-                                    />
                             </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-            
 
                 <Button
                 x:Name="EditCourseButton"
@@ -180,6 +189,7 @@
                 HorizontalOptions="Center"
                 Clicked="EditCourseButton_Clicked"
                 />
+
                 <Button
                 x:Name="navAssessmentViewButton"
                 Text="Assessments"
@@ -191,6 +201,19 @@
                 FontSize="22"
                 HorizontalOptions="Center"
                 Clicked="navAssessmentViewButton_Clicked"
+                />
+            
+            <Button 
+                x:Name="DeleteButton"
+                Text="Delete"
+                WidthRequest="300"
+                Margin="0,15,0,0"
+                FontAttributes="Bold" 
+                FontSize="20" 
+                HorizontalOptions="Center" 
+                BackgroundColor="OrangeRed"
+                CommandParameter="{Binding .}"
+                Clicked="DeleteButton_Clicked"
                 />
 
         </VerticalStackLayout>

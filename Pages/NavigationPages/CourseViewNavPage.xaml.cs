@@ -45,5 +45,10 @@ namespace StudentPortal.Pages.NavigationPage
                 _course.Add(course);
             }
         }
+
+        private void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
