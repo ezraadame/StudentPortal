@@ -66,5 +66,12 @@ namespace StudentPortal.Pages.NavigationPage
                 }
             }
         }
+
+        private async void EditButton_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var courseToEdit = button?.CommandParameter as Courses;
+            await Navigation.PushAsync(new EditCourseNavPage(courseToEdit));
+        }
     }
 }

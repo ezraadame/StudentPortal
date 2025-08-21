@@ -64,6 +64,12 @@ namespace StudentPortal.Services
             await Init();
             await _db.InsertAsync(course);
         }
+
+        public static async Task EditCourse(Courses course)
+        {
+            await Init();
+            await _db.UpdateAsync(course);
+        }
         public static async Task DeleteCourse(Courses course)
         {
             await Init();

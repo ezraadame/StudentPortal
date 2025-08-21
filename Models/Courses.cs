@@ -41,6 +41,27 @@ namespace StudentPortal.Models
             await DBService.InsertCourse(course);
 
         }
+
+        public static async Task EditCourse(int id, int termId, string? name, DateTime startDate, DateTime endDate, string? status, string? instructorName, string? instructorPhone, string? instructorEmail, string? notes, bool notificationOn)
+        {
+            await DBService.Init();
+            var course = new Courses()
+            {
+                Id = id,
+                TermId = termId,
+                Name = name,
+                StartDate = startDate,
+                EndDate = endDate,
+                Status = status,
+                InstructorName = instructorName,
+                InstructorPhone = instructorPhone,
+                InstructorEmail = instructorEmail,
+                Notes = notes,
+                NotificationOn = notificationOn
+            };
+            await DBService.EditCourse(course);
+
+        }
     }
 
 

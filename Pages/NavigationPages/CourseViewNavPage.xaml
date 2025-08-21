@@ -7,101 +7,6 @@
     <ScrollView>
         <VerticalStackLayout Padding="0,0,0,50">
             
-            <!--<Label 
-            Text="Course View"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" 
-            TextColor="Black"
-            FontSize="24"
-            FontAttributes="Bold"
-            Margin="20,50,20,0"/>
-            
-
-
-            <Frame BorderColor="Black"
-                CornerRadius="5"
-                Padding="5"
-                BackgroundColor="Azure"
-                HasShadow="True"
-                Margin="10,20,10,0">
-                <Grid ColumnSpacing="0" RowSpacing="15">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Text="Course Information" Grid.Row="0" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" />
-                    <Label Text="Start Date " Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
-                    <Label Text="End Date " Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
-                    <Label Text="Status" Grid.Row="3" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
-                </Grid>
-            </Frame>
-
-            <Frame BorderColor="Black"
-                CornerRadius="5"
-                Padding="5"
-                BackgroundColor="Azure"
-                HasShadow="True"
-                Margin="10,15,10,0">
-                <Grid ColumnSpacing="0" RowSpacing="15">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Text="Instructor Information" Grid.Row="0" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" />
-                    <Label Text="Name" Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
-                    <Label Text="Email" Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
-                    <Label Text="Phone" Grid.Row="3" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
-                </Grid>
-            </Frame>
-
-            <Frame BorderColor="Black"
-                CornerRadius="5"
-                Padding="5"
-                BackgroundColor="Azure"
-                HasShadow="True"
-                Margin="10,15,10,0">
-                <Grid ColumnSpacing="0" RowSpacing="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <Label Text="Additional Notes" Grid.Row="0" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" />
-                    <Editor 
-                        Placeholder="Enter your text here"
-                        MaxLength="200"
-                        AutoSize="Disabled"
-                        HeightRequest="80"
-                        TextColor="Black"
-                        FontSize="16"
-                        Grid.Row="1"
-                        Grid.Column="0"
-                        VerticalOptions="Start"
-                        />
-                </Grid>
-            </Frame>-->
-
             <CollectionView x:Name="SpecificCourse">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -140,21 +45,21 @@
                                             HeightRequest="3" 
                                             WidthRequest="500"  
                                             HorizontalOptions="Start" 
-                                            Margin="0,40,0,0" />
+                                            Margin="0,60,0,0" />
 
-                                <Label Text="Course Information" Grid.Row="1" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline"/>
-                                <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" Grid.Row="2" Grid.Column="0"  FontSize="18" FontAttributes="Bold" TextColor="DarkCyan"/>
-                                <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" Grid.Row="3" Grid.Column="0"  FontSize="18" FontAttributes="Bold" TextColor="DarkCyan"/>
+                                <Label Text="Course Information" Grid.Row="1" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline" Margin="0,10,0,0"/>
+                                <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" Grid.Row="2" Grid.Column="0"  FontSize="18" FontAttributes="Bold" TextColor="DarkCyan" Margin="0,5,0,0"/>
+                                <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" Grid.Row="3" Grid.Column="0"  FontSize="18" FontAttributes="Bold" TextColor="DarkCyan" Margin="0,5,0,0"/>
                                 <Label Text="{Binding Status}" Grid.Row="4" Grid.Column="0"  FontSize="18" FontAttributes="Bold" TextColor="ForestGreen" />
 
 
-                                <Label Text="Instructor Information" Grid.Row="5" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline"/>
-                                <Label Text="{Binding InstructorName, StringFormat=Name: {0}}" Grid.Row="6" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" />
-                                <Label Text="{Binding InstructorEmail, StringFormat=E-Mail: {0}}" Grid.Row="7" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" />
-                                <Label Text="{Binding InstructorPhone, StringFormat=Phone: {0}}" Grid.Row="8" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" />
+                                <Label Text="Instructor Information" Grid.Row="5" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline" Margin="0,10,0,0"/>
+                                <Label Text="{Binding InstructorName, StringFormat=Name: {0}}" Grid.Row="6" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0"/>
+                                <Label Text="{Binding InstructorEmail, StringFormat=E-Mail: {0}}" Grid.Row="7" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0" />
+                                <Label Text="{Binding InstructorPhone, StringFormat=Phone: {0}}" Grid.Row="8" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0" />
 
-                                <Label Text="Additional Notes" Grid.Row="9" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline"/>
-                                <Label Text="{Binding Notes, StringFormat='Notes: {0}'}" Grid.Row="10" Grid.Column="0" FontSize="14" TextColor="DarkSlateGray" LineBreakMode="WordWrap" />
+                                <Label Text="Additional Notes" Grid.Row="9" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline" Margin="0,10,0,0"/>
+                                <Label Text="{Binding Notes, StringFormat='Notes: {0}'}" Grid.Row="10" Grid.Column="0" FontSize="14" TextColor="DarkSlateGray" LineBreakMode="WordWrap" Margin="0,5,0,0"/>
 
                                 <Button x:Name="navCoursePageButton"
                                         Grid.Row="0" 
@@ -167,26 +72,12 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
-                <Button
-                x:Name="EditCourseButton"
-                Text="Edit Course"
-                WidthRequest="300"
-                Margin="0,15,0,0"
-                BackgroundColor="#FFA500"
-                TextColor="White"
-                FontAttributes="Bold"
-                FontSize="22"
-                HorizontalOptions="Center"
-                Clicked="EditCourseButton_Clicked"
-                />
-
-                <Button
+            <Button
                 x:Name="navAssessmentViewButton"
                 Text="Assessments"
                 TextColor="White"
                 WidthRequest="300"
-                Margin="0,15,0,0"
+                Margin="0,30,0,0"
                 BackgroundColor="MediumSlateBlue"
                 FontAttributes="Bold"
                 FontSize="22"

@@ -25,11 +25,6 @@ namespace StudentPortal.Pages.NavigationPage
             await Navigation.PushAsync(new AssessmentsNavPage());
         }
 
-        private async void EditCourseButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new EditCourseNavPage());
-        }
-
         protected override async void OnAppearing()
         {
             base.OnAppearing();

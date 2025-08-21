@@ -32,7 +32,9 @@
 
                     <Label Text="Course Name" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
                            Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <Entry Placeholder="Enter course name"
+                    <Entry x:Name="CourseNameEntry"
+                           
+                           Placeholder="Enter course name"
                            Grid.Row="1"
                            Grid.Column="0"
                            FontSize="20"
@@ -58,13 +60,14 @@
 
                     <Label Text="Start Date" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
                            Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <DatePicker Grid.Row="1"
-                               Grid.Column="0"
-                               Grid.ColumnSpan="2"
-                               Format="MMMM dd, yyyy"
-                               TextColor="Black"
-                               FontSize="18"
-                               HorizontalOptions="Start"/>
+                    <DatePicker x:Name="StartDatePickerEntry"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Format="MMMM dd, yyyy"
+                                TextColor="Black"
+                                FontSize="18"
+                                HorizontalOptions="Start"/>
                 </Grid>
             </Frame>
             
@@ -86,13 +89,15 @@
 
                     <Label Text="End Date" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
                            Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <DatePicker Grid.Row="1"
-                               Grid.Column="0"
-                               Grid.ColumnSpan="2"
-                               Format="MMMM dd, yyyy"
-                               TextColor="Black"
-                               FontSize="18"
-                               HorizontalOptions="Start"/>
+                    <DatePicker 
+                        x:Name="EndDatePickerEntry"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Format="MMMM dd, yyyy"
+                        TextColor="Black"
+                        FontSize="18"
+                        HorizontalOptions="Start"/>
                 </Grid>
             </Frame>
 
@@ -114,7 +119,7 @@
 
                     <Label Text="Status" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
                             Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <Picker x:Name="StatusPicker" Title="Choose a status" TextColor="Black" Grid.Row="1"/>
+                    <Picker x:Name="StatusPickerEntry" Title="Choose a status" TextColor="Black" Grid.Row="1"/>
                     <Label x:Name="SelectedStatusLabel" FontSize="16" TextColor="Black" Grid.Row="1"/>
                 </Grid>
             </Frame>
@@ -137,7 +142,9 @@
 
                     <Label Text="Instructor Name" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
                            Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <Entry Placeholder="Enter instructor name"
+                    <Entry 
+                           x:Name="InstructorNameEntry"
+                           Placeholder="Enter instructor name"
                            Grid.Row="1"
                            Grid.Column="0"
                            FontSize="20"
@@ -163,12 +170,14 @@
 
                     <Label Text="Instructor Email" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
                            Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <Entry Placeholder="Enter instructor email"
-                           Grid.Row="1"
-                           Grid.Column="0"
-                           FontSize="20"
-                           TextColor="Black"
-                           Keyboard="Email"/>
+                    <Entry 
+                        x:Name="InstructorEmailEntry"    
+                        Placeholder="Enter instructor email"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        FontSize="20"
+                        TextColor="Black"
+                        Keyboard="Email"/>
                 </Grid>
             </Frame>
 
@@ -190,26 +199,64 @@
 
                     <Label Text="Instructor Phone" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" 
                            Padding="3" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
-                    <Entry Placeholder="Enter instructor phone"
-                           Grid.Row="1"
-                           Grid.Column="0"
-                           FontSize="20"
-                           TextColor="Black"
-                           Keyboard="Telephone"/>
+                    <Entry  
+                       x:Name="InstructorPhoneEntry"
+                       Placeholder="Enter instructor phone"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       FontSize="20"
+                       TextColor="Black"
+                       Keyboard="Telephone"/>
                 </Grid>
             </Frame>
 
-            <Button 
-    Text="Save"
-    BackgroundColor="#4CAF50"
-    TextColor="White"
-    FontSize="20"
-    FontAttributes="Bold"
-    Margin="20,30,20,20"
-    HeightRequest="50"
-    CornerRadius="10"
-    x:Name="SaveButton"
-    HorizontalOptions="Fill"/>
+            <Frame  BorderColor="Black"
+                    CornerRadius="5"
+                    Padding="15"
+                    BackgroundColor="Azure"
+                    HasShadow="True"
+                    Margin="0,20,0,0">
+                <Grid ColumnSpacing="5" RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Additional Notes" 
+                            HorizontalTextAlignment="Start" 
+                            VerticalTextAlignment="Start" 
+                            Padding="3" 
+                            TextColor="Black" 
+                            FontSize="20" 
+                            FontAttributes="Bold"/>
+
+                    <Editor x:Name="AdditionalNotesEntry"
+                            Placeholder="Enter additional notes here"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontSize="20"
+                            TextColor="Black"
+                            HeightRequest="100"
+                            AutoSize="TextChanges" />
+                </Grid>
+            </Frame>
+
+            <Button
+                x:Name="SaveButton"
+                Text="Save"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                FontSize="20"
+                FontAttributes="Bold"
+                Margin="20,30,20,20"
+                HeightRequest="50"
+                CornerRadius="10"
+                HorizontalOptions="Fill"
+                Clicked="SaveButton_Clicked"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
