@@ -29,7 +29,7 @@ namespace StudentPortal.Pages.NavigationPage
                 InstructorName = InstructorNameEntry.Text,
                 InstructorPhone = InstructorPhoneEntry.Text,
                 InstructorEmail = InstructorEmailEntry.Text,
-                //Notes = notes,
+                Notes = AdditionalNotesEntry.Text
                 //NotificationOn = notificationOn
 
 

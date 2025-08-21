@@ -126,6 +126,7 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
 
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
@@ -153,21 +154,11 @@
                                 <Label Text="{Binding InstructorPhone, StringFormat=Phone: {0}}" Grid.Row="8" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" />
 
                                 <Label Text="Additional Notes" Grid.Row="9" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline"/>
-                                <Editor 
-                                    
-                                    MaxLength="200"
-                                    AutoSize="Disabled"
-                                    HeightRequest="80"
-                                    TextColor="Black"
-                                    FontSize="18"
-                                    Grid.Row="10"
-                                    Grid.Column="0"
-                                    VerticalOptions="Start"
-                                    />
+                                <Label Text="{Binding Notes, StringFormat='Notes: {0}'}" Grid.Row="10" Grid.Column="0" FontSize="14" TextColor="DarkSlateGray" LineBreakMode="WordWrap" />
 
                                 <Button x:Name="navCoursePageButton"
                                         Grid.Row="0" 
-                                        Grid.RowSpan="8" 
+                                        Grid.RowSpan="10" 
                                         Grid.Column="0"
                                         BackgroundColor="Transparent" 
                                         />
@@ -203,19 +194,6 @@
                 Clicked="navAssessmentViewButton_Clicked"
                 />
             
-            <Button 
-                x:Name="DeleteButton"
-                Text="Delete"
-                WidthRequest="300"
-                Margin="0,15,0,0"
-                FontAttributes="Bold" 
-                FontSize="20" 
-                HorizontalOptions="Center" 
-                BackgroundColor="OrangeRed"
-                CommandParameter="{Binding .}"
-                Clicked="DeleteButton_Clicked"
-                />
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

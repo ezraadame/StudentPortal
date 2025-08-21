@@ -46,9 +46,5 @@ namespace StudentPortal.Pages.NavigationPage
             }
         }
 
-        private void DeleteButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }
