@@ -62,7 +62,7 @@ namespace StudentPortal.Pages.NavigationPage
                     await DBService.DeleteCourse(courseToDelete);
                     _courses.Remove(courseToDelete);
 
-                    await DisplayAlert("Success", "Term deleted successfully", "OK");
+                    await DisplayAlert("Success", "Course deleted successfully", "OK");
                 }
             }
         }

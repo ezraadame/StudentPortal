@@ -65,6 +65,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Pages\NavigationPages\AddAssessment.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\NavigationPages\AddCourseNavPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

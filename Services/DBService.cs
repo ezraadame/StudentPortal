@@ -87,5 +87,30 @@ namespace StudentPortal.Services
             await Init();
             return await _db.FindAsync<Courses>(courseId);
         }
+        //
+
+        public static async Task<List<Assessments>> GetAssessments()
+        {
+            await Init();
+            return await _db.Table<Assessments>().ToListAsync();
+        }
+
+        public static async Task InsertAssessment(Assessments assessment)
+        {
+            await Init();
+            await _db.InsertAsync(assessment);
+        }
+
+        public static async Task EditAssessment(Assessments assessments)
+        {
+            await Init();
+            await _db.UpdateAsync(assessments);
+        }
+
+        public static async Task DeleteAssessment(Assessments assessments)
+        {
+            await Init();
+            await _db.DeleteAsync(assessments);
+        }
     }
 }

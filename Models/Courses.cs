@@ -63,8 +63,5 @@ namespace StudentPortal.Models
 
         }
     }
-
-
-
 }
 

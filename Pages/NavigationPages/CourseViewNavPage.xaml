@@ -54,9 +54,9 @@
 
 
                                 <Label Text="Instructor Information" Grid.Row="5" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline" Margin="0,10,0,0"/>
-                                <Label Text="{Binding InstructorName, StringFormat=Name: {0}}" Grid.Row="6" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0"/>
-                                <Label Text="{Binding InstructorEmail, StringFormat=E-Mail: {0}}" Grid.Row="7" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0" />
-                                <Label Text="{Binding InstructorPhone, StringFormat=Phone: {0}}" Grid.Row="8" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0" />
+                                <Label Text="{Binding InstructorName, StringFormat='Name: {0}'}" Grid.Row="6" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0"/>
+                                <Label Text="{Binding InstructorEmail, StringFormat='E-Mail: {0}'}" Grid.Row="7" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0" />
+                                <Label Text="{Binding InstructorPhone, StringFormat='Phone: {0}'}" Grid.Row="8" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0" />
 
                                 <Label Text="Additional Notes" Grid.Row="9" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline" Margin="0,10,0,0"/>
                                 <Label Text="{Binding Notes, StringFormat='Notes: {0}'}" Grid.Row="10" Grid.Column="0" FontSize="14" TextColor="DarkSlateGray" LineBreakMode="WordWrap" Margin="0,5,0,0"/>
