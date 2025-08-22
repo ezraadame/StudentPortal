@@ -7,12 +7,32 @@ namespace StudentPortal.Pages.NavigationPage
             InitializeComponent();
         }
 
-        private void Switch_Toggled(object sender, ToggledEventArgs e)
+        private void TermStartDateToggle_Toggled(object sender, ToggledEventArgs e)
         {
 
         }
 
-        private void Switch_Toggled_1(object sender, ToggledEventArgs e)
+        private void TermEndDateToggle_Toggled(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+        private void CourseStartDateToggle_Toggled(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+        private void CourseEndDateToggle_Toggled(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+        private void AssessmentStartDateToggle_Toggled(object sender, ToggledEventArgs e)
+        {
+
+        }
+
+        private void AssessmentEndDateToggle_Toggled(object sender, ToggledEventArgs e)
         {
 
         }

@@ -19,7 +19,7 @@
                     CornerRadius="5"
                     Padding="5"
                     BackgroundColor="Azure"
-                    HasShadow="True"
+                    
                     Margin="10,20,10,0"
  >
                 <Grid ColumnSpacing="0" RowSpacing="15">
@@ -37,8 +37,8 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Switch Grid.Row="1"/>
-                    <Switch Grid.Row="2"/>
+                    <Switch x:Name="TermStartDateToggle" Grid.Row="1" Toggled="TermStartDateToggle_Toggled"/>
+                    <Switch x:Name="TermEndDateToggle" Grid.Row="2" Toggled="TermEndDateToggle_Toggled"/>
 
                     <Label Text="Term Notifications" Grid.Row="0" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" />
                     <Label Text="Term Start Date " Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
@@ -50,7 +50,7 @@
                    CornerRadius="5"
                    Padding="5"
                    BackgroundColor="Azure"
-                   HasShadow="True"
+                   
                    Margin="10,20,10,0"
 >
                 <Grid ColumnSpacing="0" RowSpacing="15">
@@ -68,8 +68,8 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Switch Grid.Row="1"/>
-                    <Switch Grid.Row="2"/>
+                    <Switch x:Name="CourseStartDateToggle" Grid.Row="1" Toggled="CourseStartDateToggle_Toggled"/>
+                    <Switch x:Name="CourseEndDateToggle" Grid.Row="2" Toggled="CourseEndDateToggle_Toggled"/>
 
                     <Label Text="Course Notifications" Grid.Row="0" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" />
                     <Label Text="Course Start Date " Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
@@ -81,7 +81,7 @@
                    CornerRadius="5"
                    Padding="5"
                    BackgroundColor="Azure"
-                   HasShadow="True"
+                   
                    Margin="10,20,10,0"
 >
                 <Grid ColumnSpacing="0" RowSpacing="15">
@@ -99,8 +99,8 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Switch Grid.Row="1"/>
-                    <Switch Grid.Row="2"/>
+                    <Switch x:Name="AssessmentStartDateToggle" Grid.Row="1" Toggled="AssessmentStartDateToggle_Toggled"/>
+                    <Switch x:Name="AssessmentEndDateToggle" Grid.Row="2" Toggled="AssessmentEndDateToggle_Toggled"/>
 
                     <Label Text="Assessment Notifications" Grid.Row="0" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" />
                     <Label Text="Assessment Start Date " Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="Black" />
