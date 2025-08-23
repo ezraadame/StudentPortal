@@ -76,5 +76,7 @@ namespace StudentPortal.Pages.NavigationPage
         {
             await Navigation.PushAsync(new CoursesNavPage());
         }
+
+       
     }
 }

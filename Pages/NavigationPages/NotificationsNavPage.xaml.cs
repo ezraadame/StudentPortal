@@ -1,3 +1,6 @@
+using Plugin.LocalNotification;
+using StudentPortal.Models;
+
 namespace StudentPortal.Pages.NavigationPage
 {
     public partial class NotificationsNavPage : ContentPage
@@ -14,7 +17,19 @@ namespace StudentPortal.Pages.NavigationPage
 
         private void TermEndDateToggle_Toggled(object sender, ToggledEventArgs e)
         {
+            var request = new NotificationRequest()
+            {
+                Title = "Term End Date Alert",
+                Subtitle = "Term ends soon",
+                BadgeNumber = 42,
+                CategoryType = NotificationCategoryType.Reminder,
+                Schedule = new NotificationRequestSchedule()
+                {
+                    
+                }
+            };
 
+            LocalNotificationCenter.Current.Show(request);
         }
 
         private void CourseStartDateToggle_Toggled(object sender, ToggledEventArgs e)
