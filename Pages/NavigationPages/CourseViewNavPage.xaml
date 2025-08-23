@@ -32,6 +32,7 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
 
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
@@ -64,24 +65,26 @@
                                         BackgroundColor="ForestGreen"
                                         Clicked="ShareButtonForNotes_Clicked" />
 
-
+                                <Button
+                                    x:Name="navAssessmentViewButton"
+                                    Text="Assessments"
+                                    TextColor="White"
+                                    WidthRequest="300"
+                                    Margin="0,30,0,0"
+                                    Grid.Row="12"
+                                    BackgroundColor="MediumSlateBlue"
+                                    FontAttributes="Bold"
+                                    FontSize="22"
+                                    HorizontalOptions="Center"
+                                    CommandParameter="{Binding .}"
+                                    Clicked="navAssessmentViewButton_Clicked"
+                                    />
                             </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button
-                x:Name="navAssessmentViewButton"
-                Text="Assessments"
-                TextColor="White"
-                WidthRequest="300"
-                Margin="0,30,0,0"
-                BackgroundColor="MediumSlateBlue"
-                FontAttributes="Bold"
-                FontSize="22"
-                HorizontalOptions="Center"
-                Clicked="navAssessmentViewButton_Clicked"
-                />
+            
             
         </VerticalStackLayout>
     </ScrollView>

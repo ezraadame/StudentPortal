@@ -47,6 +47,7 @@
                                         FontAttributes="Bold" 
                                         FontSize="20" 
                                         BackgroundColor="Transparent" 
+                                        CommandParameter="{Binding .}"
                                         Clicked="navTermPageButton_Clicked" />
 
                                 <Button 
@@ -106,6 +107,7 @@
                 FontAttributes="Bold"
                 FontSize="22"
                 HorizontalOptions="Center"
+                
                 Clicked="navSetNotificationsButton_Clicked"/>
 
         </VerticalStackLayout>

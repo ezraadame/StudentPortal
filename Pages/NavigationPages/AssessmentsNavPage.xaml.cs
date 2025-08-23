@@ -10,11 +10,15 @@ namespace StudentPortal.Pages.NavigationPage
     public partial class AssessmentsNavPage : ContentPage
     {
         private ObservableCollection<Assessments> _assessments = new();
+        private int _courseId;
 
-        public AssessmentsNavPage()
+        public AssessmentsNavPage(int courseId)
         {
             InitializeComponent();
+            _courseId = courseId;
             AssessmentCollection.ItemsSource = _assessments;
+            DisplayAlert("Debug", $"CoursesNavPage created with courseId: {courseId}", "OK");
+
         }
 
         protected override async void OnAppearing()
@@ -25,7 +29,8 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async Task LoadAssessments()
         {
-            var assessments = await DBService.GetAssessments();
+            await DisplayAlert("Debug", $"Loading assessments for courseID: {_courseId}", "OK");
+            var assessments = await DBService.GetAssessmentsByCourse(_courseId);
             _assessments.Clear();
             foreach (var assessment in assessments)
                 _assessments.Add(assessment);
@@ -67,7 +72,7 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async void AddAssessmentButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddAssessment());
+            await Navigation.PushAsync(new AddAssessment(_courseId));
         }
     }
 }

@@ -5,9 +5,11 @@ namespace StudentPortal.Pages.NavigationPages;
 
 public partial class AddAssessment : ContentPage
 {
-	public AddAssessment()
+    private int _courseId;
+	public AddAssessment(int courseId)
 	{
 		InitializeComponent();
+        _courseId = courseId;
         TypePickerEntry.ItemsSource = new List<string>
             {
                 "Performance",
@@ -19,6 +21,7 @@ public partial class AddAssessment : ContentPage
     {
         var newAssessment = new Assessments()
         {
+            CourseId = _courseId,
             Name = AssessmentNameEntry.Text,
             StartDate = StartDatePickerEntry.Date,
             EndDate = EndDatePickerEntry.Date,

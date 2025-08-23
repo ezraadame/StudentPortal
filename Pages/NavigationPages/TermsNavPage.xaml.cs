@@ -74,9 +74,12 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async void navTermPageButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CoursesNavPage());
+            var button = sender as Button;
+            if (button?.CommandParameter is Term selectedTerm)
+            {
+                await Navigation.PushAsync(new CoursesNavPage(selectedTerm.Id));
+            }
+            
         }
-
-       
     }
 }

@@ -5,9 +5,11 @@ namespace StudentPortal.Pages.NavigationPage
 {
     public partial class AddCourseNavPage : ContentPage
     {
-        public AddCourseNavPage()
+        private int _termId;
+        public AddCourseNavPage(int termId)
         {
             InitializeComponent();
+            _termId = termId;
 
             StatusPickerEntry.ItemsSource = new List<string>
             {
@@ -22,6 +24,7 @@ namespace StudentPortal.Pages.NavigationPage
         {
             var newCourse = new Courses()
             {
+                TermId = _termId,
                 Name = CourseNameEntry.Text,
                 StartDate = StartDatePickerEntry.Date,
                 EndDate = EndDatePickerEntry.Date,

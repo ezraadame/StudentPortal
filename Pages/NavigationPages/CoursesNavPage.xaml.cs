@@ -8,10 +8,18 @@ namespace StudentPortal.Pages.NavigationPage
     public partial class CoursesNavPage : ContentPage
     {
         private ObservableCollection<Courses> _courses = new();
+        private int _termId;
         public CoursesNavPage()
         {
             InitializeComponent();
             CourseCollection.ItemsSource = _courses;
+            
+        }
+
+        public CoursesNavPage(int termId) : this()
+        {
+            _termId = termId;
+            DisplayAlert("Debug", $"CoursesNavPage created with termId: {termId}", "OK");
         }
 
         protected override async void OnAppearing()
@@ -22,7 +30,9 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async Task LoadCourses()
         {
-            var courses = await DBService.GetCourses();
+            await DisplayAlert("Debug", $"Loading courses for termId: {_termId}", "OK");
+
+            var courses = await DBService.GetCoursesByTerm(_termId);
             _courses.Clear();
             foreach (var course in courses)
                 _courses.Add(course);
@@ -30,7 +40,7 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async void addCourseButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddCourseNavPage());
+            await Navigation.PushAsync(new AddCourseNavPage(_termId));
         }
 
         private async void navCoursePageButton_Clicked(object sender, EventArgs e)

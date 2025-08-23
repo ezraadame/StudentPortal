@@ -82,12 +82,23 @@ namespace StudentPortal.Services
         }
 
         //
+
         public static async Task<Courses> GetCourse(int courseId)
         {
             await Init();
             return await _db.FindAsync<Courses>(courseId);
         }
-        //
+        public static async Task<List<Courses>> GetCoursesByTerm(int termId)
+        {
+            await Init();
+            return await _db.Table<Courses>().Where(course => course.TermId == termId).ToListAsync();
+        }
+
+        public static async Task<List<Assessments>> GetAssessmentsByCourse(int courseId)
+        {
+            await Init();
+            return await _db.Table<Assessments>().Where(assessment => assessment.CourseId == courseId).ToListAsync();
+        }
 
         public static async Task<List<Assessments>> GetAssessments()
         {

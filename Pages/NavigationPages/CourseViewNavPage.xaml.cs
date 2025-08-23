@@ -18,11 +18,17 @@ namespace StudentPortal.Pages.NavigationPage
         public CourseViewNavPage(int courseId) : this()
         {
             _courseId = courseId;
+            DisplayAlert("Debug", $"CoursesNavPage created with courseId: {courseId}", "OK");
         }
 
         private async void navAssessmentViewButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AssessmentsNavPage());
+            var button = sender as Button;
+            if (button?.CommandParameter is Courses selectedCourse)
+            {
+                await Navigation.PushAsync(new AssessmentsNavPage(selectedCourse.Id));
+            }
+            
         }
 
         protected override async void OnAppearing()
@@ -33,6 +39,8 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async Task LoadSpecificCourse(int courseId)
         {
+
+            await DisplayAlert("Debug", $"Loading courses for courseId: {_courseId}", "OK");
             var course = await DBService.GetCourse(courseId);
             _course.Clear();
             if (course != null)
