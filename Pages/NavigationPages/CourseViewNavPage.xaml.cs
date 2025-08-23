@@ -41,5 +41,26 @@ namespace StudentPortal.Pages.NavigationPage
             }
         }
 
+        private async void ShareButtonForNotes_Clicked(object sender, EventArgs e)
+        {
+            if (_course.Count > 0 && !string.IsNullOrWhiteSpace(_course[0].Notes))
+            {
+                await ShareText(_course[0].Notes);
+            }
+            else
+            {
+                await DisplayAlert("No Notes", "There are no notes to share for this course.", "OK");
+            }
+        }
+
+        public async Task ShareText(string notes)
+        {
+            await Share.Default.RequestAsync(new ShareTextRequest
+            {
+                Text = notes,
+                Title = "Share Text"
+            });
+        }
+
     }
 }

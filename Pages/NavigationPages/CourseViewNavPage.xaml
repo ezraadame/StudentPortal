@@ -15,7 +15,7 @@
                                 CornerRadius="15"
                                 Padding="20"
                                 BackgroundColor="Azure"
-                                HasShadow="True"
+                                
                                 Margin="10,35,10,0">
 
                             <Grid ColumnSpacing="5" RowSpacing="5">
@@ -60,8 +60,11 @@
 
                                 <Label Text="Additional Notes" Grid.Row="9" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline" Margin="0,10,0,0"/>
                                 <Label Text="{Binding Notes, StringFormat='Notes: {0}'}" Grid.Row="10" Grid.Column="0" FontSize="14" TextColor="DarkSlateGray" LineBreakMode="WordWrap" Margin="0,5,0,0"/>
+                                <Button x:Name="ShareButtonForNotes" Text="Share Notes" Grid.Row="11" Grid.Column="0" FontSize="16" TextColor="GhostWhite" Margin="0,100,0,0" WidthRequest="150" HorizontalOptions="Center"
+                                        BackgroundColor="ForestGreen"
+                                        Clicked="ShareButtonForNotes_Clicked" />
 
-                                
+
                             </Grid>
                         </Frame>
                     </DataTemplate>
