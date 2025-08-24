@@ -1,4 +1,5 @@
 using StudentPortal.Services;
+using StudentPortal.Validate;
 using System.Threading.Tasks;
 
 namespace StudentPortal.Pages.NavigationPage
@@ -29,6 +30,19 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
+
+            var validationResult = ValidateAssessment.ValidateAssessmentInput(
+            AssessmentNameEntry.Text,
+            TypePickerEntry.SelectedItem,
+            StartDatePickerEntry.Date,
+            EndDatePickerEntry.Date);
+
+            if (!validationResult.IsValid)
+            {
+                await DisplayAlert("Validation Error", validationResult.ErrorMessage, "OK");
+                return;
+            }
+
             _assessmentToEdit.Name = AssessmentNameEntry.Text;
             _assessmentToEdit.StartDate = StartDatePickerEntry.Date;
             _assessmentToEdit.EndDate = EndDatePickerEntry.Date;

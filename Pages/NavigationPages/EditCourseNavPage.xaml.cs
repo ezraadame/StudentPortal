@@ -1,5 +1,6 @@
 using StudentPortal.Models;
 using StudentPortal.Services;
+using StudentPortal.Validate;
 using System.Threading.Tasks;
 
 namespace StudentPortal.Pages.NavigationPage
@@ -39,6 +40,23 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
+
+            var validationResult = ValidateCourse.ValidateCourseInput(
+            CourseNameEntry.Text,
+            InstructorNameEntry.Text,
+            StatusPickerEntry.SelectedItem,
+            StartDatePickerEntry.Date,
+            EndDatePickerEntry.Date,
+            InstructorPhoneEntry.Text,
+            InstructorEmailEntry.Text
+        );
+
+            if (!validationResult.IsValid)
+            {
+                await DisplayAlert("Validation Error", validationResult.ErrorMessage, "OK");
+                return;
+            }
+
             _courseToEdit.Name = CourseNameEntry.Text;
             _courseToEdit.StartDate = StartDatePickerEntry.Date;
             _courseToEdit.EndDate = EndDatePickerEntry.Date;
@@ -48,9 +66,16 @@ namespace StudentPortal.Pages.NavigationPage
             _courseToEdit.InstructorPhone = InstructorPhoneEntry.Text;
             _courseToEdit.Notes = AdditionalNotesEntry.Text;
 
-            await DBService.EditCourse(_courseToEdit);
-            await DisplayAlert("Success", "Course was changed.", "OK");
-            await Navigation.PopAsync();
+            try
+            {
+                await DBService.EditCourse(_courseToEdit);
+                await DisplayAlert("Success", "Course saved.", "OK");
+                await Navigation.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", "Failed to edit course. Please try again.", "OK");
+            }
         }
     }
 }

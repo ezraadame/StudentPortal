@@ -19,7 +19,6 @@ namespace StudentPortal.Pages.NavigationPage
         public CoursesNavPage(int termId) : this()
         {
             _termId = termId;
-            DisplayAlert("Debug", $"CoursesNavPage created with termId: {termId}", "OK");
         }
 
         protected override async void OnAppearing()
@@ -30,8 +29,6 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async Task LoadCourses()
         {
-            await DisplayAlert("Debug", $"Loading courses for termId: {_termId}", "OK");
-
             var courses = await DBService.GetCoursesByTerm(_termId);
             _courses.Clear();
             foreach (var course in courses)

@@ -18,7 +18,6 @@ namespace StudentPortal.Pages.NavigationPage
         public CourseViewNavPage(int courseId) : this()
         {
             _courseId = courseId;
-            DisplayAlert("Debug", $"CoursesNavPage created with courseId: {courseId}", "OK");
         }
 
         private async void navAssessmentViewButton_Clicked(object sender, EventArgs e)
@@ -39,8 +38,6 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async Task LoadSpecificCourse(int courseId)
         {
-
-            await DisplayAlert("Debug", $"Loading courses for courseId: {_courseId}", "OK");
             var course = await DBService.GetCourse(courseId);
             _course.Clear();
             if (course != null)
@@ -61,14 +58,11 @@ namespace StudentPortal.Pages.NavigationPage
             }
         }
 
-        public async Task ShareText(string notes)
+        public async Task ShareText(string notes) => await Share.Default.RequestAsync(new ShareTextRequest
         {
-            await Share.Default.RequestAsync(new ShareTextRequest
-            {
-                Text = notes,
-                Title = "Share Text"
-            });
-        }
+            Text = notes,
+            Title = "Share Text"
+        });
 
     }
 }

@@ -15,7 +15,7 @@ namespace StudentPortal.Services
             {
                 return;
             }
-            //Absolute path to database file
+            
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, "StudentPortal_db.db");
 
             _db = new SQLiteAsyncConnection(databasePath);
@@ -23,9 +23,6 @@ namespace StudentPortal.Services
             await _db.CreateTableAsync<Term>();
             await _db.CreateTableAsync<Courses>();
             await _db.CreateTableAsync<Assessments>();
-
-            //TODO Create Users section of app: await _db.CreateTableAsync<Users>();
-
         }
         public static async Task CreateTables()
         {
@@ -57,8 +54,6 @@ namespace StudentPortal.Services
             return await _db.Table<Term>().ToListAsync();
         }
 
-        //
-
         public static async Task InsertCourse(Courses course)
         {
             await Init();
@@ -80,8 +75,6 @@ namespace StudentPortal.Services
             await Init();
             return await _db.Table<Courses>().ToListAsync();
         }
-
-        //
 
         public static async Task<Courses> GetCourse(int courseId)
         {

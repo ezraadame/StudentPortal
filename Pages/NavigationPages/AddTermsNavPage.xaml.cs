@@ -1,4 +1,5 @@
 using StudentPortal.Models;
+using StudentPortal.Validate;
 using StudentPortal.Services;
 using System.Threading.Tasks;
 
@@ -13,6 +14,17 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
+            var validationResult = ValidateTerm.ValidateTermInput(
+            TermNameEntry.Text,
+            StartDatePicker.Date,
+            EndDatePicker.Date);
+
+            if (!validationResult.IsValid)
+            {
+                await DisplayAlert("Validation Error", validationResult.ErrorMessage, "OK");
+                return;
+            }
+
             var newTerm = new Term()
             {
                 Name = TermNameEntry.Text,

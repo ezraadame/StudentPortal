@@ -17,8 +17,6 @@ namespace StudentPortal.Pages.NavigationPage
             InitializeComponent();
             _courseId = courseId;
             AssessmentCollection.ItemsSource = _assessments;
-            DisplayAlert("Debug", $"CoursesNavPage created with courseId: {courseId}", "OK");
-
         }
 
         protected override async void OnAppearing()
@@ -29,11 +27,15 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async Task LoadAssessments()
         {
-            await DisplayAlert("Debug", $"Loading assessments for courseID: {_courseId}", "OK");
             var assessments = await DBService.GetAssessmentsByCourse(_courseId);
             _assessments.Clear();
             foreach (var assessment in assessments)
                 _assessments.Add(assessment);
+        }
+
+        private async void AddAssessmentButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddAssessment(_courseId));
         }
 
         private async void EditButton_Clicked(object sender, EventArgs e)
@@ -66,13 +68,6 @@ namespace StudentPortal.Pages.NavigationPage
                     await DisplayAlert("Success", "Assessment deleted successfully", "OK");
                 }
             }
-        }
-
-        
-
-        private async void AddAssessmentButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddAssessment(_courseId));
         }
     }
 }

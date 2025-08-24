@@ -1,5 +1,6 @@
 using StudentPortal.Models;
 using StudentPortal.Services;
+using StudentPortal.Validate;
 using System.Threading.Tasks;
 namespace StudentPortal.Pages.NavigationPages;
 
@@ -16,9 +17,20 @@ public partial class AddAssessment : ContentPage
                 "Objective",
             };
     }
-
     private async void SaveCourseButton_Clicked(object sender, EventArgs e)
     {
+        var validationResult= ValidateAssessment.ValidateAssessmentInput(
+            AssessmentNameEntry.Text,
+            TypePickerEntry.SelectedItem,
+            StartDatePickerEntry.Date,
+            EndDatePickerEntry.Date);
+
+        if (!validationResult.IsValid)
+        {
+            await DisplayAlert("Validation Error", validationResult.ErrorMessage, "OK");
+            return;
+        }
+
         var newAssessment = new Assessments()
         {
             CourseId = _courseId,
@@ -31,6 +43,5 @@ public partial class AddAssessment : ContentPage
         await DBService.InsertAssessment(newAssessment);
         await DisplayAlert("Success", "Assessment added!", "OK");
         await Navigation.PopAsync();
-
     }
 }
