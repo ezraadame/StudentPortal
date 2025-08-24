@@ -1,6 +1,7 @@
 ﻿using SQLite;
+using StudentPortal.Services;
 
-namespace StudentPortal.Services
+namespace StudentPortal.Models
 {
     [Table("Assessments")]
     public class Assessments

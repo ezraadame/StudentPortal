@@ -28,8 +28,8 @@ namespace StudentPortal.Validate
             if (selectedType == null)
                 return new ValidationResult { IsValid = false, ErrorMessage = "Please select a course status." };
 
-            if (startDate >= endDate)
-                return new ValidationResult { IsValid = false, ErrorMessage = "End date must be after start date." };
+            if (startDate > endDate)
+                return new ValidationResult { IsValid = false, ErrorMessage = "End date must be day of or after start date." };
 
             return new ValidationResult { IsValid = true };
         }

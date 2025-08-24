@@ -1,4 +1,5 @@
 ﻿using StudentPortal.Pages.NavigationPage;
+using StudentPortal.Services;
 
 namespace StudentPortal
 {
@@ -12,6 +13,7 @@ namespace StudentPortal
             {
                 BackgroundColor = Colors.LightSteelBlue
             };
+            Task.Run(async () => await DBService.InitializeEvaluationData());
         }
     }
 }
