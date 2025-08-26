@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentPortal.Pages.NavigationPage.CourseViewNavPage"
+             Title="Course View"
+             BackgroundColor="GhostWhite">
+    <ScrollView>
+        <VerticalStackLayout Padding="0,0,0,50">
+            
+            <CollectionView x:Name="SpecificCourse">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame 
+                                BorderColor="Black"
+                                CornerRadius="15"
+                                Padding="20"
+                                BackgroundColor="Azure"
+                                
+                                Margin="10,35,10,0">
+
+                            <Grid ColumnSpacing="5" RowSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Name}" HorizontalTextAlignment ="Start" VerticalTextAlignment="Start" Padding="5" TextColor="Black" FontSize="32" FontAttributes="Bold" HorizontalOptions="Center"/>
+                                <BoxView    Color="Black" 
+                                            HeightRequest="3" 
+                                            WidthRequest="500"  
+                                            HorizontalOptions="Start" 
+                                            Margin="0,100,0,0" />
+
+                                <Label Text="Course Information" Grid.Row="1" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline" Margin="0,10,0,0"/>
+                                <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" Grid.Row="2" Grid.Column="0"  FontSize="18" FontAttributes="Bold" TextColor="DarkCyan" Margin="0,5,0,0"/>
+                                <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" Grid.Row="3" Grid.Column="0"  FontSize="18" FontAttributes="Bold" TextColor="DarkCyan" Margin="0,5,0,0"/>
+                                <Label Text="{Binding Status, StringFormat='Status: {0}'}" Grid.Row="4" Grid.Column="0"  FontSize="18" FontAttributes="Bold" TextColor="ForestGreen" />
+
+
+                                <Label Text="Instructor Information" Grid.Row="5" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline" Margin="0,10,0,0"/>
+                                <Label Text="{Binding InstructorName, StringFormat='Name: {0}'}" Grid.Row="6" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0"/>
+                                <Label Text="{Binding InstructorEmail, StringFormat='E-Mail: {0}'}" Grid.Row="7" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0" />
+                                <Label Text="{Binding InstructorPhone, StringFormat='Phone: {0}'}" Grid.Row="8" Grid.Column="0" FontSize="18" FontAttributes="Bold" TextColor="DarkBlue" Margin="0,5,0,0" />
+
+                                <Label Text="Additional Notes" Grid.Row="9" Grid.Column="0"  FontSize="22" FontAttributes="Bold" TextColor="Black" TextDecorations="Underline" Margin="0,10,0,0"/>
+                                <Label Text="{Binding Notes, StringFormat='Notes: {0}'}" Grid.Row="10" Grid.Column="0" FontSize="14" TextColor="DarkSlateGray" LineBreakMode="WordWrap" Margin="0,5,0,0"/>
+                                <Button x:Name="ShareButtonForNotes" Text="Share Notes" Grid.Row="11" Grid.Column="0" FontSize="16" TextColor="GhostWhite" Margin="0,100,0,0" WidthRequest="150" HorizontalOptions="Center"
+                                        BackgroundColor="ForestGreen"
+                                        Clicked="ShareButtonForNotes_Clicked" />
+
+                                <Button
+                                    x:Name="navAssessmentViewButton"
+                                    Text="Assessments"
+                                    TextColor="White"
+                                    WidthRequest="300"
+                                    Margin="0,30,0,0"
+                                    Grid.Row="12"
+                                    BackgroundColor="MediumSlateBlue"
+                                    FontAttributes="Bold"
+                                    FontSize="22"
+                                    HorizontalOptions="Center"
+                                    CommandParameter="{Binding .}"
+                                    Clicked="navAssessmentViewButton_Clicked"
+                                    />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

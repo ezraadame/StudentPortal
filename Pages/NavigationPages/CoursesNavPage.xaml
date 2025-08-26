@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentPortal.Pages.NavigationPage.CoursesNavPage"
+             Title="Courses"
+             BackgroundColor="GhostWhite">
+    <ScrollView>
+        <VerticalStackLayout Padding="0,0,0,50">
+            <Label 
+                Text="Courses"
+                FontSize="30"
+                FontAttributes="Bold"
+                Margin="20,60,20,0"
+                TextColor="Black"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+
+            <CollectionView x:Name="CourseCollection">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame 
+                                BorderColor="Black"
+                                CornerRadius="15"
+                                Padding="15"
+                                BackgroundColor="Azure"
+                                HasShadow="True"
+                                Margin="10,35,10,0">
+                            
+                            <Grid ColumnSpacing="5" RowSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Name}" HorizontalTextAlignment ="Start" VerticalTextAlignment="Start" Padding="0" TextColor="Black" FontSize="24" FontAttributes="Bold" />
+                                <Label Text="{Binding StartDate, StringFormat='Start: {0:MM/dd/yyyy}'}" Grid.Row="1" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="DarkCyan" />
+                                <Label Text="{Binding EndDate, StringFormat='End: {0:MM/dd/yyyy}'}" Grid.Row="2" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="DarkCyan" />
+                                <Label Text="{Binding Status, StringFormat='Status: {0}'}" Grid.Row="3" Grid.Column="0"  FontSize="16" FontAttributes="Bold" TextColor="ForestGreen" />
+
+                                <Button x:Name="navCoursePageButton"
+                                        Grid.Row="0" 
+                                        Grid.RowSpan="4" 
+                                        Grid.Column="0" 
+                                        FontAttributes="Bold" 
+                                        FontSize="20" 
+                                        BackgroundColor="Transparent"
+                                        CommandParameter="{Binding .}"
+                                        Clicked="navCoursePageButton_Clicked" />
+
+                                <Button 
+                                    x:Name="EditButton"
+                                    Text="Edit" 
+                                    Grid.Row="0" 
+                                    Grid.Column="1" 
+                                    FontAttributes="Bold" 
+                                    FontSize="20" 
+                                    WidthRequest="70" 
+                                    HorizontalOptions="End" 
+                                    Grid.RowSpan="1" 
+                                    BackgroundColor="#FFA500"
+                                    TextColor="White"
+                                    CommandParameter="{Binding .}"
+                                    Clicked="EditButton_Clicked"/>
+
+                                <Button 
+                                    x:Name="DeleteButton"
+                                    Text="Delete" 
+                                    Grid.Row="2" 
+                                    Grid.Column="1" 
+                                    FontAttributes="Bold" 
+                                    FontSize="20" 
+                                    WidthRequest="90" 
+                                    HorizontalOptions="End" 
+                                    Grid.RowSpan="2" 
+                                    BackgroundColor="OrangeRed"
+                                    CommandParameter="{Binding .}"
+                                    Clicked="DeleteButton_Clicked"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button
+                x:Name="addCourseButton"
+                Text="Add Course"
+                TextColor="White"
+                WidthRequest="300"
+                Margin="0,50,0,0"
+                BackgroundColor="#007ACC"
+                FontAttributes="Bold"
+                FontSize="22"
+                HorizontalOptions="Center"
+                Clicked="addCourseButton_Clicked"
+                />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

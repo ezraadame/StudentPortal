@@ -1,4 +1,7 @@
-﻿namespace StudentPortal
+﻿using StudentPortal.Pages.NavigationPage;
+using StudentPortal.Services;
+
+namespace StudentPortal
 {
     public partial class App : Application
     {
@@ -6,7 +9,11 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new TermsNavPage())
+            {
+                BackgroundColor = Colors.LightSteelBlue
+            };
+            Task.Run(async () => await DBService.InitializeEvaluationData());
         }
     }
 }

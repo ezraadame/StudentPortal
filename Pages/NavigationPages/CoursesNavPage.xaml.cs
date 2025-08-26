@@ -1,0 +1,84 @@
+using StudentPortal.Models;
+using StudentPortal.Services;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+
+namespace StudentPortal.Pages.NavigationPage
+{
+    public partial class CoursesNavPage : ContentPage
+    {
+        private ObservableCollection<Courses> _courses = new();
+        private int _termId;
+        public CoursesNavPage()
+        {
+            InitializeComponent();
+            CourseCollection.ItemsSource = _courses;
+            
+        }
+
+        public CoursesNavPage(int termId) : this()
+        {
+            _termId = termId;
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await LoadCourses();
+        }
+
+        private async Task LoadCourses()
+        {
+            var courses = await DBService.GetCoursesByTerm(_termId);
+            _courses.Clear();
+            foreach (var course in courses)
+                _courses.Add(course);
+        }
+
+        private async void addCourseButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddCourseNavPage(_termId));
+        }
+
+        private async void navCoursePageButton_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            if (button?.CommandParameter is Courses course)
+            {
+                await Navigation.PushAsync(new CourseViewNavPage(course.Id));
+                return;
+            }
+        }
+
+        private async void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var courseToDelete = button?.CommandParameter as Courses;
+
+            if (courseToDelete != null)
+            {
+                bool userConfirmed = await DisplayAlert(
+                    "Delete Term",
+                    $"Are you sure you want to delete '{courseToDelete.Name}'?",
+                    "Delete",
+                    "Cancel"
+                    );
+
+                if (userConfirmed)
+                {
+                    await DBService.DeleteCourse(courseToDelete);
+                    _courses.Remove(courseToDelete);
+
+                    await DisplayAlert("Success", "Course deleted successfully", "OK");
+                }
+            }
+        }
+
+        private async void EditButton_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var courseToEdit = button?.CommandParameter as Courses;
+            await Navigation.PushAsync(new EditCourseNavPage(courseToEdit));
+        }
+    }
+}
