@@ -25,6 +25,8 @@ namespace StudentPortal.Services
                 await _db.CreateTableAsync<Term>();
                 await _db.CreateTableAsync<Courses>();
                 await _db.CreateTableAsync<Assessments>();
+                await _db.CreateTableAsync<Reports>();
+                await _db.CreateTableAsync<Users>();
             }
             catch (Exception ex)
             {
@@ -44,6 +46,8 @@ namespace StudentPortal.Services
             await _db!.CreateTableAsync<Term>();
             await _db.CreateTableAsync<Courses>();
             await _db.CreateTableAsync<Assessments>();
+            await _db.CreateTableAsync<Reports>();
+            await _db.CreateTableAsync<Users>();
         }
 
         public static async Task InsertTerm(Term term)

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentPortal.Pages.NavigationPages.HomePageRelated.HomeNavPage"
+             Title="Home Page">
+    <VerticalStackLayout Padding="10,0,10,50">
+        
+        <Label 
+            Text="Student Portal"
+            FontSize="30" 
+            FontAttributes="Bold"
+            Margin="20,60,20,0"
+            TextColor="Black"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Button
+        x:Name="StudentClassworkButton"
+        Text="Access Student Classwork"
+        TextColor="White"
+        WidthRequest="300"
+        Margin="0,150,0,0"
+        BackgroundColor="DodgerBlue"
+        FontAttributes="Bold"
+        FontSize="22"
+        HorizontalOptions="Center"
+            Clicked="StudentClassworkButton_Clicked"
+        />
+
+        <Button
+        x:Name="navSetNotificationsButton"
+        Text="Set Notification Preferences"
+        TextColor="White"
+        WidthRequest="300"
+        Margin="0,50,0,0"
+        BackgroundColor="MediumPurple"
+        FontAttributes="Bold"
+        FontSize="22"
+        HorizontalOptions="Center"
+            Clicked="navSetNotificationsButton_Clicked"
+        />
+
+        <Button
+        x:Name="ReportButton"
+        Text="Access Reports"
+        TextColor="White"
+        WidthRequest="300"
+        Margin="0,50,0,0"
+        BackgroundColor="#FFA500"
+        FontAttributes="Bold"
+        FontSize="22"
+        HorizontalOptions="Center"
+            Clicked="ReportButton_Clicked"
+        />
+
+    </VerticalStackLayout>
+</ContentPage>

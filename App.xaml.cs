@@ -1,4 +1,5 @@
 ﻿using StudentPortal.Pages.NavigationPage;
+using StudentPortal.Pages.NavigationPages.LogInPage;
 using StudentPortal.Services;
 
 namespace StudentPortal
@@ -9,7 +10,7 @@ namespace StudentPortal
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new TermsNavPage())
+            MainPage = new NavigationPage(new LogIn())
             {
                 BackgroundColor = Colors.LightSteelBlue
             };

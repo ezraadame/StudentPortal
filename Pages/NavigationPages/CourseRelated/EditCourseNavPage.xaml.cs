@@ -72,7 +72,7 @@ namespace StudentPortal.Pages.NavigationPage
                 await DisplayAlert("Success", "Course saved.", "OK");
                 await Navigation.PopAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await DisplayAlert("Error", "Failed to edit course. Please try again.", "OK");
             }

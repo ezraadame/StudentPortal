@@ -66,37 +66,52 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\NavigationPages\AddAssessment.xaml">
+	  <Compile Update="Pages\NavigationPages\LogInPage\LogInNavPage.xaml.cs">
+	    <DependentUpon>LogInNavPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\NavigationPages\AssessmentRelated\AddAssessment.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NavigationPages\AddCourseNavPage.xaml">
+	  <MauiXaml Update="Pages\NavigationPages\CourseRelated\AddCourseNavPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NavigationPages\AddTermsNavPage.xaml">
+	  <MauiXaml Update="Pages\NavigationPages\HomePageRelated\HomeNavPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NavigationPages\AssessmentsNavPage.xaml">
+	  <MauiXaml Update="Pages\NavigationPages\LogInPage\LogInNavPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NavigationPages\CoursesNavPage.xaml">
+	  <MauiXaml Update="Pages\NavigationPages\ReportsRelated\ReportsNav.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NavigationPages\CourseViewNavPage.xaml">
+	  <MauiXaml Update="Pages\NavigationPages\TermsRelated\AddTermsNavPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NavigationPages\EditAssessmentNavPage.xaml">
+	  <MauiXaml Update="Pages\NavigationPages\AssessmentRelated\AssessmentsNavPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NavigationPages\EditCourseNavPage.xaml">
+	  <MauiXaml Update="Pages\NavigationPages\CourseRelated\CoursesNavPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NavigationPages\EditTermsNavPage.xaml">
+	  <MauiXaml Update="Pages\NavigationPages\CourseRelated\CourseViewNavPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NavigationPages\NotificationsNavPage.xaml">
+	  <MauiXaml Update="Pages\NavigationPages\AssessmentRelated\EditAssessmentNavPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\NavigationPages\TermsNavPage.xaml">
+	  <MauiXaml Update="Pages\NavigationPages\CourseRelated\EditCourseNavPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\NavigationPages\TermsRelated\EditTermsNavPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\NavigationPages\NotificationsRelated\NotificationsNavPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\NavigationPages\TermsRelated\TermsNavPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

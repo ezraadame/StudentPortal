@@ -7,7 +7,6 @@ namespace StudentPortal.Pages.NavigationPage
 {
     public partial class TermsNavPage : ContentPage
     {
-        //private readonly string _termId;
         private ObservableCollection<Term> _terms = new();
 
         public TermsNavPage()
