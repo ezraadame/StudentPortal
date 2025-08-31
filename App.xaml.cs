@@ -15,6 +15,7 @@ namespace StudentPortal
                 BackgroundColor = Colors.LightSteelBlue
             };
             Task.Run(async () => await DBService.InitializeEvaluationData());
+            Task.Run(async () => await DBService.InitializeTestUserData());
         }
     }
 }

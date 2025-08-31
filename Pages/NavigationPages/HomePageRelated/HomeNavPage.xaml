@@ -4,7 +4,6 @@
              x:Class="StudentPortal.Pages.NavigationPages.HomePageRelated.HomeNavPage"
              Title="Home Page">
     <VerticalStackLayout Padding="10,0,10,50">
-        
         <Label 
             Text="Student Portal"
             FontSize="30" 
@@ -14,44 +13,138 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-        <Button
-        x:Name="StudentClassworkButton"
-        Text="Access Student Classwork"
-        TextColor="White"
-        WidthRequest="300"
-        Margin="0,150,0,0"
-        BackgroundColor="DodgerBlue"
-        FontAttributes="Bold"
-        FontSize="22"
-        HorizontalOptions="Center"
-            Clicked="StudentClassworkButton_Clicked"
-        />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <Button
-        x:Name="navSetNotificationsButton"
-        Text="Set Notification Preferences"
-        TextColor="White"
-        WidthRequest="300"
-        Margin="0,50,0,0"
-        BackgroundColor="MediumPurple"
-        FontAttributes="Bold"
-        FontSize="22"
-        HorizontalOptions="Center"
-            Clicked="navSetNotificationsButton_Clicked"
-        />
+            
+            <Frame Grid.Row="0" 
+                   BackgroundColor="GhostWhite" 
+                   CornerRadius="25" 
+                   Padding="10,5"
+                   Margin="25,50,25,5"
+                   HasShadow="False">
+                <Entry 
+                    x:Name="SearchEntry" 
+                    Placeholder="🔍 Search courses..." 
+                    BackgroundColor="Transparent"
+                    TextChanged="SearchEntry_TextChanged" />
+            </Frame>
 
-        <Button
-        x:Name="ReportButton"
-        Text="Access Reports"
-        TextColor="White"
-        WidthRequest="300"
-        Margin="0,50,0,0"
-        BackgroundColor="#FFA500"
-        FontAttributes="Bold"
-        FontSize="22"
-        HorizontalOptions="Center"
-            Clicked="ReportButton_Clicked"
-        />
+            
+            <Frame Grid.Row="1" 
+                   BackgroundColor="White"
+                   CornerRadius="10"
+                   Padding="0"
+                   Margin="25,0,25,10"
+                   HasShadow="True"
+                   IsVisible="False"
+                   x:Name="SearchResultsFrame">
 
+                <CollectionView 
+                    x:Name="SearchResultsView" 
+                    ItemsSource="{Binding SearchResults}"
+                    BackgroundColor="Blue"
+                    MaximumHeightRequest="300">
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="15,12" 
+                                  BackgroundColor="White">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                </Grid.GestureRecognizers>
+
+                                
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup Name="CommonStates">
+                                        <VisualState Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="White" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="BackgroundColor" Value="LightBlue" />
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <StackLayout Spacing="4">
+                                    <Label Text="{Binding Name}" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold"
+                                           TextColor="Black" />
+                                    <Label Text="{Binding InstructorName, StringFormat='Instructor: {0}'}" 
+                                           FontSize="14" 
+                                           TextColor="Gray" />
+                                    <Label Text="{Binding Status}" 
+                                           FontSize="12" 
+                                           TextColor="DodgerBlue"
+                                           FontAttributes="Italic" />
+                                </StackLayout>
+
+                                
+                                <BoxView Color="LightGray" 
+                                         HeightRequest="1" 
+                                         VerticalOptions="End" 
+                                         Margin="0,0,0,0" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Frame>
+
+            
+            <Label x:Name="NoResultsLabel"
+                   Grid.Row="1"
+                   Text="No courses found matching your search"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   IsVisible="False"
+                   TextColor="Gray"
+                   FontAttributes="Italic"
+                   Margin="25,20,25,20" />
+
+            <!-- Rest of your existing content goes in Row 2 -->
+            <StackLayout Grid.Row="2" Spacing="50" Margin="0,30,0,0">
+                <Button
+                    x:Name="StudentClassworkButton"
+                    Text="Access Student Classwork"
+                    TextColor="White"
+                    WidthRequest="300"
+                    BackgroundColor="DodgerBlue"
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    HorizontalOptions="Center"
+                    Clicked="StudentClassworkButton_Clicked" />
+
+                <Button
+                    x:Name="navSetNotificationsButton"
+                    Text="Set Notification Preferences"
+                    TextColor="White"
+                    WidthRequest="300"
+                    BackgroundColor="MediumPurple"
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    HorizontalOptions="Center"
+                    Clicked="navSetNotificationsButton_Clicked" />
+
+                <Button
+                    x:Name="ReportButton"
+                    Text="Access Reports"
+                    TextColor="White"
+                    WidthRequest="300"
+                    BackgroundColor="#FFA500"
+                    FontAttributes="Bold"
+                    FontSize="22"
+                    HorizontalOptions="Center"
+                    Clicked="ReportButton_Clicked" />
+            </StackLayout>
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>

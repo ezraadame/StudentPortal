@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.Controls.Compatibility;
+﻿
+using Microsoft.Maui.Controls.Compatibility;
 using SQLite;
 using StudentPortal.EvaluationData;
 using StudentPortal.Models;
@@ -161,5 +162,68 @@ namespace StudentPortal.Services
             EnsureDatabaseInitialized();
             await AnikaPatelData.CreateEvaluationData(_db!);
         }
+
+        public static async Task InitializeTestUserData()
+        {
+            await Init();
+            EnsureDatabaseInitialized();
+            await AnikaPatelData.CreateTestUser(_db!);
+        }
+
+        public static async Task<Users> GetUserByUsername(string username)
+        {
+            await Init();
+            EnsureDatabaseInitialized();
+            return await _db.Table<Users>()
+                                  .Where(u => u.Username == username)
+                                  .FirstOrDefaultAsync();
+        }
+        public static async Task<bool> ValidateUser(string username, string password)
+        {
+            var user = await GetUserByUsername(username);
+
+            if (user == null)
+                return false;
+
+            return BCrypt.Net.BCrypt.Verify(password, user.PasswordHash);
+        }
+
+        public static async Task<bool> UserExists(string username)
+        {
+            var user = await GetUserByUsername(username);
+            return user != null;
+        }
+
+        public static async Task<List<Reports>> GenerateAssessmentReport()
+        {
+            await Init();
+            EnsureDatabaseInitialized();
+
+            var reportItems = new List<Reports>();
+            var courses = await _db.Table<Courses>().ToListAsync();
+
+            foreach (var course in courses)
+            {
+                var assessments = await _db.Table<Assessments>()
+                    .Where(a => a.CourseId == course.Id)
+                    .ToListAsync();
+
+                foreach (var assessment in assessments)
+                {
+                    reportItems.Add(new Reports
+                    {
+                        CourseName = course.Name,
+                        AssessmentName = assessment.Name,
+                        Type = assessment.Type,
+                        StartDate = assessment.StartDate,
+                        EndDate = assessment.EndDate,
+                        
+                    });
+                }
+            }
+
+            return reportItems;
+        }
+
     }
 }

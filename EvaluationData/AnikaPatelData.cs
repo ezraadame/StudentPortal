@@ -56,5 +56,21 @@ namespace StudentPortal.EvaluationData
 
             });
         }
+        public static async Task CreateTestUser(SQLiteAsyncConnection database)
+        {
+            var existingUser = await database.Table<Users>()
+                .Where(u => u.Username == "testuser")
+                .FirstOrDefaultAsync();
+
+            if (existingUser != null) return;
+
+            var testUser = new Users
+            {
+                Username = "testuser",
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword("password123"),
+                CreatedAt = DateTime.Now
+            };
+            await database.InsertAsync(testUser);
+        }
     }
 }

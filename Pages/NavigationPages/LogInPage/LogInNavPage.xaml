@@ -35,7 +35,8 @@
 
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Username" 
+                    <Label 
+                        Text="Username" 
                         HorizontalTextAlignment="Start" 
                         VerticalTextAlignment="Start" 
                         Padding="3" 
@@ -43,14 +44,16 @@
                         FontSize="20" 
                         FontAttributes="Bold"/>
 
-                    <Entry x:Name="UsernameEntry"
+                    <Entry 
+                        x:Name="UsernameEntry"
                         Placeholder="Enter username"
                         Grid.Row="1"
                         Grid.Column="0"
                         FontSize="20"
                         TextColor="Black"/>
 
-                    <Label Text="Password" 
+                    <Label 
+                        Text="Password" 
                         HorizontalTextAlignment="Start" 
                         VerticalTextAlignment="Start" 
                         Padding="3"
@@ -59,12 +62,14 @@
                         FontSize="20" 
                         FontAttributes="Bold"/>
 
-                    <Entry x:Name="PasswordEntry"
+                    <Entry 
+                        x:Name="PasswordEntry"
                         Placeholder="Enter password"
                         Grid.Row="5"
                         Grid.Column="0"
                         FontSize="20"
-                        TextColor="Black"/>
+                        TextColor="Black"
+                        IsPassword="True"/>
                 </Grid>
             </Frame>
 
@@ -77,16 +82,16 @@
             </CollectionView>
 
             <Button
-        x:Name="LogInButton"
-        Text="Log In"
-        TextColor="White"
-        WidthRequest="200"
-        Margin="0,75,0,0"
-        BackgroundColor="ForestGreen"
-        FontAttributes="Bold"
-        FontSize="25"
-        HorizontalOptions="Center"
-        Clicked="LogInButton_Clicked"
+            x:Name="LogInButton"
+            Text="Log In"
+            TextColor="White"
+            WidthRequest="200"
+            Margin="0,75,0,0"
+            BackgroundColor="ForestGreen"
+            FontAttributes="Bold"
+            FontSize="25"
+            HorizontalOptions="Center"
+            Clicked="LogInButton_Clicked"
         />
 
         </VerticalStackLayout>

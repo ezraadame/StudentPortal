@@ -83,7 +83,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            
+
             <Button
                 x:Name="addTermButton"
                 Text="Add Term"
@@ -96,20 +96,6 @@
                 HorizontalOptions="Center"
                 Clicked="addTermButton_Clicked"
                 />
-
-            <Button
-                x:Name="navSetNotificationsButton"
-                Text="Set Notification Preferences"
-                TextColor="White"
-                WidthRequest="300"
-                Margin="0,50,0,0"
-                BackgroundColor="MediumPurple"
-                FontAttributes="Bold"
-                FontSize="22"
-                HorizontalOptions="Center"
-                
-                Clicked="navSetNotificationsButton_Clicked"/>
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
