@@ -15,30 +15,23 @@ namespace StudentPortal.Pages.NavigationPage
             TermsCollection.ItemsSource = _terms;
 
         }
-
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await LoadTerms();
+            await LoadTermsByUser();
         }
 
-        private async Task LoadTerms()
+        private async Task LoadTermsByUser()
         {
-            var terms = await DBService.GetTerms();
+            var terms = await DBService.GetTermsByUser(UserSession.CurrentUserId);
             _terms.Clear();
             foreach (var term in terms)
+            {
                 _terms.Add(term);
+            }
         }
 
-        private async void navSetNotificationsButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new NotificationsNavPage());
-        }
-
-        private async void addTermButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new AddTermsNavPage());
-        }
+        private async void addTermButton_Clicked(object sender, EventArgs e) => await Navigation.PushAsync(new AddTermsNavPage());
 
         private async void EditButton_Clicked(object sender, EventArgs e)
         {

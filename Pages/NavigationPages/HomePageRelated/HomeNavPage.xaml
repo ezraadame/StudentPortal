@@ -2,16 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StudentPortal.Pages.NavigationPages.HomePageRelated.HomeNavPage"
-             Title="Home Page">
-    <VerticalStackLayout Padding="10,0,10,50">
+             Title="Home">
+    <VerticalStackLayout Padding="20" Spacing="20">
+
         <Label 
             Text="Student Portal"
-            FontSize="30" 
+            FontSize="34"
             FontAttributes="Bold"
-            Margin="20,60,20,0"
             TextColor="Black"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center"
+            Margin="0,50,0,0"/>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -20,21 +20,20 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            
-            <Frame Grid.Row="0" 
-                   BackgroundColor="GhostWhite" 
-                   CornerRadius="25" 
-                   Padding="10,5"
-                   Margin="25,50,25,5"
-                   HasShadow="False">
-                <Entry 
-                    x:Name="SearchEntry" 
-                    Placeholder="🔍 Search courses..." 
-                    BackgroundColor="Transparent"
-                    TextChanged="SearchEntry_TextChanged" />
+
+            <Frame BackgroundColor="GhostWhite"
+                   CornerRadius="25"
+                   Padding="15,10"
+                   Margin="0,10,0,0"
+                   HasShadow="True">
+                <Entry x:Name="SearchEntry"
+                       Placeholder="🔍 Search courses..."
+                       PlaceholderColor="Gray"
+                       BackgroundColor="Transparent"
+                       TextChanged="SearchEntry_TextChanged"/>
             </Frame>
 
-            
+
             <Frame Grid.Row="1" 
                    BackgroundColor="White"
                    CornerRadius="10"
@@ -57,23 +56,6 @@
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                                 </Grid.GestureRecognizers>
-
-                                
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup Name="CommonStates">
-                                        <VisualState Name="Normal">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="White" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                        <VisualState Name="Selected">
-                                            <VisualState.Setters>
-                                                <Setter Property="BackgroundColor" Value="LightBlue" />
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-
                                 <StackLayout Spacing="4">
                                     <Label Text="{Binding Name}" 
                                            FontSize="16" 
@@ -88,7 +70,7 @@
                                            FontAttributes="Italic" />
                                 </StackLayout>
 
-                                
+
                                 <BoxView Color="LightGray" 
                                          HeightRequest="1" 
                                          VerticalOptions="End" 
@@ -99,7 +81,7 @@
                 </CollectionView>
             </Frame>
 
-            
+
             <Label x:Name="NoResultsLabel"
                    Grid.Row="1"
                    Text="No courses found matching your search"
@@ -110,7 +92,6 @@
                    FontAttributes="Italic"
                    Margin="25,20,25,20" />
 
-            <!-- Rest of your existing content goes in Row 2 -->
             <StackLayout Grid.Row="2" Spacing="50" Margin="0,30,0,0">
                 <Button
                     x:Name="StudentClassworkButton"
@@ -132,7 +113,7 @@
                     FontAttributes="Bold"
                     FontSize="22"
                     HorizontalOptions="Center"
-                    Clicked="navSetNotificationsButton_Clicked" />
+                    Clicked="NavSetNotificationsButton_Clicked" />
 
                 <Button
                     x:Name="ReportButton"
@@ -144,6 +125,12 @@
                     FontSize="22"
                     HorizontalOptions="Center"
                     Clicked="ReportButton_Clicked" />
+
+                <Button Text="Logout"
+                        x:Name="LogoutButton"
+                        Clicked="LogoutButton_Clicked"
+                        BackgroundColor="LightCoral"
+                        TextColor="White" />
             </StackLayout>
         </Grid>
     </VerticalStackLayout>

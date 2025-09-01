@@ -9,13 +9,11 @@ namespace StudentPortal
         public App()
         {
             InitializeComponent();
-
             MainPage = new NavigationPage(new LogIn())
             {
                 BackgroundColor = Colors.LightSteelBlue
             };
             Task.Run(async () => await DBService.InitializeEvaluationData());
-            Task.Run(async () => await DBService.InitializeTestUserData());
         }
     }
 }

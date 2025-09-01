@@ -29,7 +29,8 @@ namespace StudentPortal.Pages.NavigationPage
             {
                 Name = TermNameEntry.Text,
                 StartDate = StartDatePicker.Date,
-                EndDate = EndDatePicker.Date
+                EndDate = EndDatePicker.Date,
+                UserId = UserSession.CurrentUserId
             };
 
             await DBService.InsertTerm(newTerm);

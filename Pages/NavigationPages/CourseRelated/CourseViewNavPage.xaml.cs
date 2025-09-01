@@ -9,15 +9,13 @@ namespace StudentPortal.Pages.NavigationPage
         private ObservableCollection<Courses> _course = new();
 
         private int _courseId;
-        public CourseViewNavPage()
+        
+        public CourseViewNavPage(int courseId)
         {
             InitializeComponent();
             SpecificCourse.ItemsSource = _course;
-        }
-
-        public CourseViewNavPage(int courseId) : this()
-        {
             _courseId = courseId;
+            
         }
 
         private async void navAssessmentViewButton_Clicked(object sender, EventArgs e)

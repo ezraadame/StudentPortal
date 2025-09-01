@@ -11,6 +11,8 @@ namespace StudentPortal.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int TermId { get; set; }
+
+        public int UserId { get; set; }
         public string? Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -21,13 +23,14 @@ namespace StudentPortal.Models
         public string? Notes { get; set; }
         public bool NotificationOn { get; set; }
 
-        public static async Task AddCourse(int id, int termId, string? name, DateTime startDate, DateTime endDate, string? status, string? instructorName, string? instructorPhone, string? instructorEmail, string? notes, bool notificationOn)
+        public static async Task AddCourse(int id, int termId, int userId, string? name, DateTime startDate, DateTime endDate, string? status, string? instructorName, string? instructorPhone, string? instructorEmail, string? notes, bool notificationOn)
         {
             await DBService.Init();
             var course = new Courses()
             {
                 Id = id,
                 TermId = termId,
+                UserId = userId,
                 Name = name,
                 StartDate = startDate,
                 EndDate = endDate,
@@ -41,14 +44,14 @@ namespace StudentPortal.Models
             await DBService.InsertCourse(course);
 
         }
-
-        public static async Task EditCourse(int id, int termId, string? name, DateTime startDate, DateTime endDate, string? status, string? instructorName, string? instructorPhone, string? instructorEmail, string? notes, bool notificationOn)
+        public static async Task EditCourse(int id, int termId, int userId, string? name, DateTime startDate, DateTime endDate, string? status, string? instructorName, string? instructorPhone, string? instructorEmail, string? notes, bool notificationOn)
         {
             await DBService.Init();
             var course = new Courses()
             {
                 Id = id,
                 TermId = termId,
+                UserId = userId,
                 Name = name,
                 StartDate = startDate,
                 EndDate = endDate,

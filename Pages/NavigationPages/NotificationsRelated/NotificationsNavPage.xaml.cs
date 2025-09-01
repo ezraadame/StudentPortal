@@ -32,7 +32,7 @@ namespace StudentPortal.Pages.NavigationPage
         {
             Preferences.Set("TermStartNotifications", e.Value);
 
-            var terms = await DBService.GetTerms();
+            var terms = await DBService.GetTermsByUser(UserSession.CurrentUserId);
             var today = DateTime.Today;
             var termsStartingToday = terms.Where(term => term.StartDate.Date == today).ToList();
 
@@ -58,7 +58,7 @@ namespace StudentPortal.Pages.NavigationPage
         {
             Preferences.Set("TermEndNotifications", e.Value);
 
-            var terms = await DBService.GetTerms();
+            var terms = await DBService.GetTermsByUser(UserSession.CurrentUserId);
             var today = DateTime.Today;
             var termsEndingToday = terms.Where(term => term.EndDate.Date == today).ToList();
 
@@ -70,7 +70,7 @@ namespace StudentPortal.Pages.NavigationPage
                     Title = "TERM ENDING TODAY",
                     Description = $"Your term '{term.Name}' is ending today!",
 
-                    BadgeNumber = 42,
+                    BadgeNumber = 1,
                     CategoryType = NotificationCategoryType.Reminder,
                     Schedule = new NotificationRequestSchedule()
                     {
@@ -85,7 +85,7 @@ namespace StudentPortal.Pages.NavigationPage
         {
             Preferences.Set("CourseStartNotifications", e.Value);
 
-            var courses = await DBService.GetCourses();
+            var courses = await DBService.GetCoursesByUser(UserSession.CurrentUserId);
             var today = DateTime.Today;
             var coursesStartingToday = courses.Where(course => course.StartDate.Date == today).ToList();
 
@@ -111,7 +111,7 @@ namespace StudentPortal.Pages.NavigationPage
         {
             Preferences.Set("CourseEndNotifications", e.Value);
 
-            var courses = await DBService.GetCourses();
+            var courses = await DBService.GetCoursesByUser(UserSession.CurrentUserId);
             var today = DateTime.Today;
             var coursesEndingToday = courses.Where(course => course.EndDate.Date == today).ToList();
 
@@ -137,7 +137,7 @@ namespace StudentPortal.Pages.NavigationPage
         {
             Preferences.Set("AssessmentStartNotifications", e.Value);
 
-            var assessments = await DBService.GetAssessments();
+            var assessments = await DBService.GetAssessmentsByUser(UserSession.CurrentUserId);
             var today = DateTime.Today;
             var assessmentStartingToday = assessments.Where(assessment => assessment.StartDate.Date == today).ToList();
 
@@ -163,7 +163,7 @@ namespace StudentPortal.Pages.NavigationPage
         {
             Preferences.Set("AssessmentEndNotifications", e.Value);
 
-            var assessments = await DBService.GetAssessments();
+            var assessments = await DBService.GetAssessmentsByUser(UserSession.CurrentUserId);
             var today = DateTime.Today;
             var assessmentEndingToday = assessments.Where(assessment => assessment.EndDate.Date == today).ToList();
 

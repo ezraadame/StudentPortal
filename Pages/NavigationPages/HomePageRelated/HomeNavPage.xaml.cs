@@ -8,30 +8,30 @@ namespace StudentPortal.Pages.NavigationPages.HomePageRelated;
 
 public partial class HomeNavPage : ContentPage
 {
-    private List<Courses> _allCourses = new();
-
-    public ObservableCollection<Courses> SearchResults { get; set; } = new();
+    private List<Courses> _allCourses = [];
+    public ObservableCollection<Courses> SearchResults { get; set; } = [];
+    private ObservableCollection<Term> _terms = [];
     public HomeNavPage()
     {
         InitializeComponent();
+
         SearchResultsView.ItemsSource = SearchResults;
     }
-
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await LoadAllCourses();
+        await LoadAllCoursesByUser();
     }
 
-    private async Task LoadAllCourses()
+
+    private async Task LoadAllCoursesByUser()
     {
         try
         {
-            _allCourses = await DBService.GetCourses();
+            _allCourses = await DBService.GetCoursesByUser(UserSession.CurrentUserId);
         }
         catch (Exception ex)
         {
-
             await DisplayAlert("Error", "Failed to load courses: " + ex.Message, "OK");
         }
     }
@@ -79,23 +79,23 @@ public partial class HomeNavPage : ContentPage
 
             var matchingCourses = _allCourses.Where(course =>
             {
-                bool nameMatch = course.Name?.ToLower().Contains(searchLower) == true;
-                bool instructorMatch = course.InstructorName?.ToLower().Contains(searchLower) == true;
-                bool statusMatch = course.Status?.ToLower().Contains(searchLower) == true;
+                bool nameMatch = course.Name?.ToLower().Contains(searchLower, StringComparison.CurrentCultureIgnoreCase) == true;
+                bool instructorMatch = course.InstructorName?.ToLower().Contains(searchLower, StringComparison.CurrentCultureIgnoreCase) == true;
+                bool statusMatch = course.Status?.ToLower().Contains(searchLower, StringComparison.CurrentCultureIgnoreCase) == true;
 
                 return nameMatch || instructorMatch || statusMatch;
 
             }).Take(5);
 
             var matchingCoursesList = matchingCourses.ToList();
-            
+
 
 
             SearchResults.Clear();
             foreach (var course in matchingCourses)
             {
                 SearchResults.Add(course);
-                
+
             }
             ShowSearchResults();
         }
@@ -126,15 +126,13 @@ public partial class HomeNavPage : ContentPage
         SearchResultsFrame.IsVisible = false;
         SearchResultsView.IsVisible = false;
         NoResultsLabel.IsVisible = false;
-        
     }
-
     private async void StudentClassworkButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new TermsNavPage());
     }
 
-    private async void navSetNotificationsButton_Clicked(object sender, EventArgs e)
+    private async void NavSetNotificationsButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new NotificationsNavPage());
     }
@@ -142,5 +140,38 @@ public partial class HomeNavPage : ContentPage
     private async void ReportButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new ReportsNav());
+    }
+
+    private async void LogoutButton_Clicked(object sender, EventArgs e)
+    {
+        bool confirmLogout = await DisplayAlert(
+        "Confirm Logout",
+        "Are you sure you want to logout?",
+        "Yes",
+        "No");
+
+        if (confirmLogout)
+        {
+            UserSession.Logout();
+        }
+    }
+
+    protected override bool OnBackButtonPressed()
+    {
+        Dispatcher.Dispatch(async () =>
+        {
+            bool confirmLogout = await DisplayAlert(
+                "Exit App",
+                "Do you want to logout and exit?",
+                "Logout",
+                "Stay");
+
+            if (confirmLogout)
+            {
+                UserSession.Logout();
+            }
+        });
+
+        return true;
     }
 }

@@ -29,7 +29,7 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async Task LoadCourses()
         {
-            var courses = await DBService.GetCoursesByTerm(_termId);
+            var courses = await DBService.GetCoursesByTermAndUser(_termId, UserSession.CurrentUserId);
             _courses.Clear();
             foreach (var course in courses)
                 _courses.Add(course);

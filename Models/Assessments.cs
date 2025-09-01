@@ -7,23 +7,24 @@ namespace StudentPortal.Models
     public class Assessments
     {
         
-
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int CourseId { get; set; }
+        public int UserId { get; set; }
+
         public string? Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string? Type { get; set; }
         public bool NotificationOn { get; set; }
-
-        public static async Task AddAssessment(int id, int courseId, string? name, DateTime startDate, DateTime endDate, string? type, bool notificationOn)
+        public static async Task AddAssessment(int id, int courseId, int userId, string? name, DateTime startDate, DateTime endDate, string? type, bool notificationOn)
         {
             await DBService.Init();
             var assessment = new Assessments()
             {
                 Id = id,
                 CourseId = courseId,
+                UserId = userId,
                 Name = name,
                 StartDate = startDate,
                 EndDate = endDate,
@@ -33,14 +34,14 @@ namespace StudentPortal.Models
             await DBService.InsertAssessment(assessment);
             
         }
-
-        public static async Task EditAssessment(int id, int courseId, string? name, DateTime startDate, DateTime endDate, string? type, bool notificationOn)
+        public static async Task EditAssessment(int id, int courseId, int userId, string? name, DateTime startDate, DateTime endDate, string? type, bool notificationOn)
         {
             await DBService.Init();
             var assessment = new Assessments()
             {
                 Id = id,
                 CourseId = courseId,
+                UserId = userId,
                 Name = name,
                 StartDate = startDate,
                 EndDate = endDate,

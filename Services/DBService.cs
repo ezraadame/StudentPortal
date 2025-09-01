@@ -10,45 +10,43 @@ namespace StudentPortal.Services
     public static class DBService
     {
         private static SQLiteAsyncConnection? _db;
-
         public static async Task Init()
         {
             if (_db != null)
             {
                 return;
             }
-            
+
             try
             {
                 var databasePath = Path.Combine(FileSystem.AppDataDirectory, "StudentPortal_db.db");
                 _db = new SQLiteAsyncConnection(databasePath);
 
+                await _db.CreateTableAsync<Users>();
                 await _db.CreateTableAsync<Term>();
                 await _db.CreateTableAsync<Courses>();
                 await _db.CreateTableAsync<Assessments>();
                 await _db.CreateTableAsync<Reports>();
-                await _db.CreateTableAsync<Users>();
+
             }
             catch (Exception ex)
             {
                 throw new InvalidOperationException("Failed to initialize database", ex);
             }
         }
-
         private static void EnsureDatabaseInitialized()
         {
             if (_db == null)
                 throw new InvalidOperationException("Database is not initialized.");
         }
-
         public static async Task CreateTables()
         {
             EnsureDatabaseInitialized();
+            await _db.CreateTableAsync<Users>();
             await _db!.CreateTableAsync<Term>();
             await _db.CreateTableAsync<Courses>();
             await _db.CreateTableAsync<Assessments>();
             await _db.CreateTableAsync<Reports>();
-            await _db.CreateTableAsync<Users>();
         }
 
         public static async Task InsertTerm(Term term)
@@ -162,21 +160,14 @@ namespace StudentPortal.Services
             EnsureDatabaseInitialized();
             await AnikaPatelData.CreateEvaluationData(_db!);
         }
-
-        public static async Task InitializeTestUserData()
-        {
-            await Init();
-            EnsureDatabaseInitialized();
-            await AnikaPatelData.CreateTestUser(_db!);
-        }
-
         public static async Task<Users> GetUserByUsername(string username)
         {
             await Init();
             EnsureDatabaseInitialized();
-            return await _db.Table<Users>()
-                                  .Where(u => u.Username == username)
-                                  .FirstOrDefaultAsync();
+            return await 
+                _db.Table<Users>()       
+                .Where(u => u.Username == username)             
+                .FirstOrDefaultAsync();
         }
         public static async Task<bool> ValidateUser(string username, string password)
         {
@@ -217,13 +208,87 @@ namespace StudentPortal.Services
                         Type = assessment.Type,
                         StartDate = assessment.StartDate,
                         EndDate = assessment.EndDate,
-                        
+
                     });
                 }
             }
 
             return reportItems;
         }
+        public static async Task<List<Term>> GetTermsByUser(int userId)
+        {
+            await Init();
+            EnsureDatabaseInitialized();
+            return await _db!.Table<Term>()
+                .Where(term => term.UserId == userId)
+                .ToListAsync();
+        }
+
+        public static async Task<List<Courses>> GetCoursesByUser(int userId)
+        {
+            await Init();
+            EnsureDatabaseInitialized();
+            return await _db!.Table<Courses>()
+                .Where(course => course.UserId == userId)
+                .ToListAsync();
+        }
+
+        public static async Task<List<Courses>> GetCoursesByTermAndUser(int termId, int userId)
+        {
+            await Init();
+            EnsureDatabaseInitialized();
+            return await _db!.Table<Courses>()
+                .Where(course => course.TermId == termId && course.UserId == userId)
+                .ToListAsync();
+        }
+        public static async Task<List<Assessments>> GetAssessmentsByUser(int userId)
+        {
+            await Init();
+            EnsureDatabaseInitialized();
+            return await _db!.Table<Assessments>()
+                .Where(assessment => assessment.UserId == userId)
+                .ToListAsync();
+        }
+
+        public static async Task<List<Assessments>> GetAssessmentsByCourseAndUser(int courseId, int userId)
+        {
+            await Init();
+            EnsureDatabaseInitialized();
+            return await _db!.Table<Assessments>()
+                .Where(assessment => assessment.CourseId == courseId && assessment.UserId == userId)
+                .ToListAsync();
+        }
+        public static async Task<List<Reports>> GenerateAssessmentReportForUser(int userId)
+        {
+            await Init();
+            EnsureDatabaseInitialized();
+
+            var reportItems = new List<Reports>();
+            var courses = await _db.Table<Courses>()
+                .Where(c => c.UserId == userId)
+                .ToListAsync();
+
+            foreach (var course in courses)
+            {
+                var assessments = await _db.Table<Assessments>()
+                    .Where(a => a.CourseId == course.Id && a.UserId == userId)
+                    .ToListAsync();
+
+                foreach (var assessment in assessments)
+                {
+                    reportItems.Add(new Reports
+                    {
+                        CourseName = course.Name,
+                        AssessmentName = assessment.Name,
+                        Type = assessment.Type,
+                        StartDate = assessment.StartDate,
+                        EndDate = assessment.EndDate,
+                    });
+                }
+            }
+            return reportItems;
+        }
+
 
     }
 }

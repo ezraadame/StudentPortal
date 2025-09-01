@@ -27,7 +27,7 @@ namespace StudentPortal.Pages.NavigationPage
 
         private async Task LoadAssessments()
         {
-            var assessments = await DBService.GetAssessmentsByCourse(_courseId);
+            var assessments = await DBService.GetAssessmentsByCourseAndUser(_courseId, UserSession.CurrentUserId);
             _assessments.Clear();
             foreach (var assessment in assessments)
                 _assessments.Add(assessment);

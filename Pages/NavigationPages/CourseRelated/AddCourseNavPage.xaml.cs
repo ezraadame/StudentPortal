@@ -43,6 +43,7 @@ namespace StudentPortal.Pages.NavigationPage
             var newCourse = new Courses()
             {
                 TermId = _termId,
+                UserId = UserSession.CurrentUserId,
                 Name = CourseNameEntry.Text.Trim(),
                 StartDate = StartDatePickerEntry.Date,
                 EndDate = EndDatePickerEntry.Date,

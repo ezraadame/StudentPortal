@@ -37,7 +37,8 @@ public partial class AddAssessment : ContentPage
             Name = AssessmentNameEntry.Text,
             StartDate = StartDatePickerEntry.Date,
             EndDate = EndDatePickerEntry.Date,
-            Type = (string)TypePickerEntry.SelectedItem
+            Type = (string)TypePickerEntry.SelectedItem,
+            UserId = UserSession.CurrentUserId
         };
 
         await DBService.InsertAssessment(newAssessment);
