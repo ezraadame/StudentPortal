@@ -39,8 +39,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<!-- Remove or comment out the MauiIcon -->
+		<!-- <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" /> -->
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -54,6 +54,14 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<AndroidResource Include="Platforms\Android\Resources\mipmap-mdpi\appicon.png" />
+		<AndroidResource Include="Platforms\Android\Resources\mipmap-hdpi\appicon.png" />
+		<AndroidResource Include="Platforms\Android\Resources\mipmap-xhdpi\appicon.png" />
+		<AndroidResource Include="Platforms\Android\Resources\mipmap-xxhdpi\appicon.png" />
+		<AndroidResource Include="Platforms\Android\Resources\mipmap-xxxhdpi\appicon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -123,5 +131,4 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
-
 </Project>
